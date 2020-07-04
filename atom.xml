@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jingyu_Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://jingyu.life/"/>
+  <updated>2020-07-04T19:29:47.804Z</updated>
+  <id>https://jingyu.life/</id>
+  
+  <author>
+    <name>Jingyu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Typora快捷键使用(Mac)</title>
+    <link href="https://jingyu.life/2020/06/25/typora-usage/"/>
+    <id>https://jingyu.life/2020/06/25/typora-usage/</id>
+    <published>2020-06-24T16:00:00.000Z</published>
+    <updated>2020-07-04T19:29:47.804Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚开始搭建自己的博客， 学习了一下Markdown语法和Typora，这里记录了一下相关快捷键的使用。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://jingyu.life/categories/hexo/"/>
+    
+    
+      <category term="Typora" scheme="https://jingyu.life/tags/typora/"/>
+    
+      <category term="MarkDown" scheme="https://jingyu.life/tags/markdown/"/>
+    
+  </entry>
+  
+</feed>
