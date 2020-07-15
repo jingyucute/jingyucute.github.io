@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jingyu.life/"/>
-  <updated>2020-07-04T19:29:47.804Z</updated>
+  <updated>2020-07-15T06:12:30.144Z</updated>
   <id>https://jingyu.life/</id>
   
   <author>
@@ -17,15 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>nvm 使用说明</title>
+    <link href="https://jingyu.life/2020/07/15/nvm-usage/"/>
+    <id>https://jingyu.life/2020/07/15/nvm-usage/</id>
+    <published>2020-07-15T04:04:41.000Z</published>
+    <updated>2020-07-15T06:12:30.144Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;简介&lt;/p&gt;
+&lt;p&gt; Nvm （Node Version Manager） 是node.js 的版本管理器，用它可以方便的在机器上安装并维护多个node版本。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Nvm" scheme="https://jingyu.life/categories/nvm/"/>
+    
+    
+      <category term="Nvm" scheme="https://jingyu.life/tags/nvm/"/>
+    
+      <category term="Node" scheme="https://jingyu.life/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Typora快捷键使用(Mac)</title>
     <link href="https://jingyu.life/2020/06/25/typora-usage/"/>
     <id>https://jingyu.life/2020/06/25/typora-usage/</id>
     <published>2020-06-24T16:00:00.000Z</published>
-    <updated>2020-07-04T19:29:47.804Z</updated>
+    <updated>2020-07-15T04:13:00.491Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;刚开始搭建自己的博客， 学习了一下Markdown语法和Typora，这里记录了一下相关快捷键的使用。&lt;/p&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;简介&lt;/p&gt;
+&lt;p&gt;刚开始搭建自己的博客， 学习了一下Markdown语法和Typora，这里记录了一下相关快捷键的使用。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
