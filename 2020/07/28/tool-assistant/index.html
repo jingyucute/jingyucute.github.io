@@ -16,14 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>nvm 使用说明 - Jingyu_Blog</title>
+    <title>常用工具网址 - Jingyu_Blog</title>
   
-    <meta name="keywords" content="Nvm,Node">
+    <meta name="keywords" content="Helper">
   
   
     <meta name="description" content="
-简介
- Nvm （Node Version Manager） 是node.js 的版本管理器，用它可以方便的在机器上安装并维护多个node版本。
+这里记录一些常用的工具、网址等等
 ">
   
 
@@ -400,8 +399,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/07/15/nvm-usage/">
-      nvm 使用说明
+    <a href="/2020/07/28/tool-assistant/">
+      常用工具网址
     </a>
   </h1>
 
@@ -424,14 +423,6 @@
           
             
               
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/nvm/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Nvm</p>
-    </a>
-  </div>
-
 
             
           
@@ -439,7 +430,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月15日</p>
+    <p>发布于：2020年7月28日</p>
   </a>
 </div>
 
@@ -450,13 +441,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：476字</p>
+      <p>字数：45字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2分钟</p>
+      <p>时长：1分钟</p>
     </a>
   </div>
 
@@ -482,48 +473,24 @@
           
           
           <blockquote>
-<p>简介</p>
-<p> Nvm （Node Version Manager） 是node.js 的版本管理器，用它可以方便的在机器上安装并维护多个node版本。</p>
+<p>这里记录一些常用的工具、网址等等</p>
 </blockquote>
 <a id="more"></a>
 
-<h2 id="1、安装和更新"><a href="#1、安装和更新" class="headerlink" title="1、安装和更新"></a>1、安装和更新</h2><h3 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h3><p>  下载并执行</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br></pre></td></tr></table></figure>
-
-<p>   或者</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br></pre></td></tr></table></figure>
-
-<p>  然后配置环境变量，将下面的内容添加到配置文件(<code>~/.bash_profile</code>，<code>~/.zshrc</code>，<code>~/.profile</code>，或<code>~/.bashrc</code>)</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$([ -z "$&#123;XDG_CONFIG_HOME-&#125;" ] &amp;&amp; printf %s "$&#123;HOME&#125;/.nvm" || printf %s "$&#123;XDG_CONFIG_HOME&#125;/nvm")</span>"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h3><p> 1、克隆远程仓库到本地</p>
-<p> 先 <code>cd ~</code> 切换到家目录， 然后执行<code>git clone https://github.com/nvm-sh/nvm.git .nvm</code></p>
-<p> 2、进入到.nvm目录，切换到最近的版本</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.nvm</span><br><span class="line">git checkout v0.35.3</span><br></pre></td></tr></table></figure>
-
-<p>3、 激活nvm</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">bash nvm.sh</span><br></pre></td></tr></table></figure>
-
-<p>4、 配置环境变量，文件位置同上，导入内容如下</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="nvm更新"><a href="#nvm更新" class="headerlink" title="nvm更新"></a>nvm更新</h3><p> 1、切换到<code>$NVM_DIR</code> (上面在环境变量中配置过了)</p>
-<p> 2、拉取最新的提交节点</p>
-<p> 3、切换到最新的版本</p>
-<p> 4、激活新版本</p>
-<p>可以直接在命令行中执行一下内容</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">(</span><br><span class="line">  <span class="built_in">cd</span> <span class="string">"<span class="variable">$NVM_DIR</span>"</span></span><br><span class="line">  git fetch --tags origin</span><br><span class="line">  git checkout `git describe --abbrev=0 --tags --match <span class="string">"v[0-9]*"</span> $(git rev-list --tags --max-count=1)`</span><br><span class="line">) &amp;&amp; bash <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2、相关使用"><a href="#2、相关使用" class="headerlink" title="2、相关使用"></a>2、相关使用</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看已经安装的版本</span></span><br><span class="line">nvm ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看可以安装的所有版本</span></span><br><span class="line">nvm ls-remote</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有长期支持版本（LTS）</span></span><br><span class="line">nvm ls-remote --lts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看最新lts</span></span><br><span class="line">nvm version-remote --lts    nvm version-remote lts/erbium</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装最新lts</span></span><br><span class="line">nvm install --lts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装或卸载指定node版本</span></span><br><span class="line">nvm install v12.18.2    nvm uninstall v12.18.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用node</span></span><br><span class="line">nvm use v12.18.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置或取消别名</span></span><br><span class="line">nvm <span class="built_in">alias</span> product v12.18.2     nvm <span class="built_in">unalias</span> product</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装io.js</span></span><br><span class="line">nvm install iojs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看node安装位置</span></span><br><span class="line">nvm <span class="built_in">which</span> v12.18.2</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<blockquote>
-<p>本文参考地址</p>
-<p><a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm</a></p>
-</blockquote>
+<h3 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h3><hr>
+<ul>
+<li><a href="https://next.itellyou.cn/" target="_blank" rel="noopener">我告诉你</a></li>
+<li><a href="https://favicon.io/" target="_blank" rel="noopener">简易图标制作</a></li>
+<li><a href="https://icons8.cn/" target="_blank" rel="noopener">svg简易制作</a></li>
+<li><a href="https://tool.lu/" target="_blank" rel="noopener">一个很有意思的小站</a></li>
+</ul>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><hr>
+<ul>
+<li><p>Typora</p>
+</li>
+<li><p>V2rayU</p>
+</li>
+</ul>
 
           
             <div class='article_footer'>
@@ -560,7 +527,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://jingyu.life/2020/07/15/nvm-usage/>https://jingyu.life/2020/07/15/nvm-usage/</a></p>
+            <p>本文永久链接是：<a href=https://jingyu.life/2020/07/28/tool-assistant/>https://jingyu.life/2020/07/28/tool-assistant/</a></p>
           
         
       </blockquote>
@@ -583,10 +550,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-15T14:12:30+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-28T15:42:56+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：2020年7月15日</p>
+    <p>本页文档最后更新于：2020年7月28日</p>
   </a>
 </div>
 
@@ -595,7 +562,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/nvm/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Nvm</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/node/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Node</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/helper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Helper</p></a></div>
 
 
         
@@ -608,9 +575,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://jingyu.life/2020/07/15/nvm-usage/&title=nvm 使用说明 - Jingyu_Blog&summary=
-简介
- Nvm （Node Version Manager） 是node.js 的版本管理器，用它可以方便的在机器上安装并维护多个node版本。
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://jingyu.life/2020/07/28/tool-assistant/&title=常用工具网址 - Jingyu_Blog&summary=
+这里记录一些常用的工具、网址等等
 "
           
           >
@@ -623,9 +589,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://jingyu.life/2020/07/15/nvm-usage/&title=nvm 使用说明 - Jingyu_Blog&summary=
-简介
- Nvm （Node Version Manager） 是node.js 的版本管理器，用它可以方便的在机器上安装并维护多个node版本。
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://jingyu.life/2020/07/28/tool-assistant/&title=常用工具网址 - Jingyu_Blog&summary=
+这里记录一些常用的工具、网址等等
 "
           
           >
@@ -638,9 +603,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://jingyu.life/2020/07/15/nvm-usage/&title=nvm 使用说明 - Jingyu_Blog&summary=
-简介
- Nvm （Node Version Manager） 是node.js 的版本管理器，用它可以方便的在机器上安装并维护多个node版本。
+          href="http://service.weibo.com/share/share.php?url=https://jingyu.life/2020/07/28/tool-assistant/&title=常用工具网址 - Jingyu_Blog&summary=
+这里记录一些常用的工具、网址等等
 "
           
           >
@@ -665,48 +629,17 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/07/28/tool-assistant/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>常用工具网址</p>
-                <p class='content'>
-这里记录一些常用的工具、网址等等
-
-
-
-网址
-
-我告诉你
-简易图标制作
-svg简易制作
-一个很有意思的小站
-
-工具
-
-Typora
-
-V2rayU
-
-
-</p>
-              </a>
             
-            
-              <a class='next' href='/2020/06/25/typora-usage/'>
-                <p class='title'>Typora快捷键使用(Mac)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+              <a class='next' href='/2020/07/15/nvm-usage/'>
+                <p class='title'>nvm 使用说明<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>
 简介
-刚开始搭建自己的博客， 学习了一下Markdown语法和Typora，这里记录了一下相关快捷键的使用。
+ Nvm （Node Version Manager） 是node.js 的版本管理器，用它可以方便的在机器上安装并维护多个node版本。
 
 
 
-1、基本操作1.1 生成目录
-语法
-[toc]
-
-效果图
-[toc]
-
-
-1...</p>
+1、安装和更新脚本安装  下载并执行
+c...</p>
               </a>
             
           </div>
@@ -734,7 +667,7 @@ V2rayU
 
   <script>
     window.subData = {
-      title: 'nvm 使用说明',
+      title: '常用工具网址',
       tools: true
     }
   </script>
@@ -759,7 +692,7 @@ V2rayU
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、安装和更新"><span class="toc-text">1、安装和更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#脚本安装"><span class="toc-text">脚本安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-安装"><span class="toc-text">git 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvm更新"><span class="toc-text">nvm更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、相关使用"><span class="toc-text">2、相关使用</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#网址"><span class="toc-text">网址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工具"><span class="toc-text">工具</span></a></li></ol>
     </div>
   </section>
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jingyu.life/"/>
-  <updated>2020-07-15T06:12:30.144Z</updated>
+  <updated>2020-07-28T07:42:56.761Z</updated>
   <id>https://jingyu.life/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用工具网址</title>
+    <link href="https://jingyu.life/2020/07/28/tool-assistant/"/>
+    <id>https://jingyu.life/2020/07/28/tool-assistant/</id>
+    <published>2020-07-28T06:34:06.000Z</published>
+    <updated>2020-07-28T07:42:56.761Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;这里记录一些常用的工具、网址等等&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Helper" scheme="https://jingyu.life/tags/helper/"/>
+    
+  </entry>
   
   <entry>
     <title>nvm 使用说明</title>
