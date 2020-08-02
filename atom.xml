@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jingyu.life/"/>
-  <updated>2020-07-28T07:42:56.761Z</updated>
+  <updated>2020-08-01T09:22:24.592Z</updated>
   <id>https://jingyu.life/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Docker 基础篇</title>
+    <link href="https://jingyu.life/2020/07/31/docker/basic/"/>
+    <id>https://jingyu.life/2020/07/31/docker/basic/</id>
+    <published>2020-07-31T08:40:08.000Z</published>
+    <updated>2020-08-01T09:22:24.592Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Docker是一种运行在Linux和Windows上的软件，用于创建、管理和编排容器&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="运维" scheme="https://jingyu.life/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="Docker" scheme="https://jingyu.life/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>常用工具网址</title>
     <link href="https://jingyu.life/2020/07/28/tool-assistant/"/>
     <id>https://jingyu.life/2020/07/28/tool-assistant/</id>
     <published>2020-07-28T06:34:06.000Z</published>
-    <updated>2020-07-28T07:42:56.761Z</updated>
+    <updated>2020-08-01T09:03:11.670Z</updated>
     
     <summary type="html">
     
@@ -31,6 +54,8 @@
     
     </summary>
     
+    
+      <category term="工具" scheme="https://jingyu.life/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="Helper" scheme="https://jingyu.life/tags/helper/"/>
@@ -42,7 +67,7 @@
     <link href="https://jingyu.life/2020/07/15/nvm-usage/"/>
     <id>https://jingyu.life/2020/07/15/nvm-usage/</id>
     <published>2020-07-15T04:04:41.000Z</published>
-    <updated>2020-07-15T06:12:30.144Z</updated>
+    <updated>2020-07-31T09:16:57.957Z</updated>
     
     <summary type="html">
     
@@ -54,7 +79,9 @@
     </summary>
     
     
-      <category term="Nvm" scheme="https://jingyu.life/categories/nvm/"/>
+      <category term="开发" scheme="https://jingyu.life/categories/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="环境" scheme="https://jingyu.life/categories/%E5%BC%80%E5%8F%91/%E7%8E%AF%E5%A2%83/"/>
     
     
       <category term="Nvm" scheme="https://jingyu.life/tags/nvm/"/>
@@ -68,7 +95,7 @@
     <link href="https://jingyu.life/2020/06/25/typora-usage/"/>
     <id>https://jingyu.life/2020/06/25/typora-usage/</id>
     <published>2020-06-24T16:00:00.000Z</published>
-    <updated>2020-07-15T04:13:00.491Z</updated>
+    <updated>2020-08-01T09:03:07.770Z</updated>
     
     <summary type="html">
     
@@ -80,7 +107,7 @@
     </summary>
     
     
-      <category term="Hexo" scheme="https://jingyu.life/categories/hexo/"/>
+      <category term="工具" scheme="https://jingyu.life/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="Typora" scheme="https://jingyu.life/tags/typora/"/>
