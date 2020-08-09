@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Docker 进阶篇之Compose - Jingyu_Blog</title>
+  
+    <meta name="keywords" content="Docker">
+  
+  
+    <meta name="description" content="
+Compose 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。
+">
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Jingyu_Blog">
+  
+
+  <!-- import meta -->
+  
+    
+      <meta name='theme-color' content='#FFFFFF'>
+    
+      <meta name='msapplication-TileColor' content='#1BC3FB'>
+    
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon.ico'>
+  <link rel='icon' type='image/png' sizes='32x32' href='https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon-32x32.png'>
+  <link rel='apple-touch-icon' sizes='180x180' href='https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/apple-touch-icon.png'>
+  <link rel='manifest' href='https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/site.webmanifest'>
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            Jingyu's Blog
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-rss fa-fw'></i>文章
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-rss fa-fw'></i>文章
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/08/02/docker/compose/">
+      Docker 进阶篇之Compose
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://jingyu.life" rel="nofollow">
+    <img src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/avatar/young.jpg">
+    <p>Jingyu</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E8%BF%90%E7%BB%B4/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>运维</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年8月2日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.7k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：11分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <blockquote>
+<p><code>Compose</code> 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>Compose</code> 定位是 「定义和运行多个 Docker 容器的应用（Defining and running multi-container Docker applications）」，其前身是开源项目 Fig。 <code>Compose</code>代码目前在 <a href="https://github.com/docker/compose" target="_blank" rel="noopener">https://github.com/docker/compose</a> 上开源。</p>
+<h3 id="安装与卸载"><a href="#安装与卸载" class="headerlink" title="安装与卸载"></a>安装与卸载</h3><ul>
+<li><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ul>
+<li><p>Mac/Windows</p>
+<p><code>Docker Desktop for Mac/Windows</code> 自带 <code>docker-compose</code> 二进制文件，安装 Docker 之后可以直接使用。</p>
+</li>
+<li><p>Ubuntu</p>
+<p>1、通过下载二进制包</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo curl -L https://github.com/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br><span class="line">$ sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>2、 pip安装</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo pip install -U docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>3、bash补全命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ curl -L https://raw.githubusercontent.com/docker/compose/1.25.5/contrib/completion/bash/docker-compose &gt; /etc/bash_completion.d/docker-compose</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><p>1、删除二进制包文件</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo rm /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>2、pip移除</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo pip uninstall docker-compose</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="使用以及说明"><a href="#使用以及说明" class="headerlink" title="使用以及说明"></a>使用以及说明</h3><ul>
+<li><h4 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h4><p>首先介绍几个术语。</p>
+<ul>
+<li>服务 (<code>service</code>)：一个应用容器，实际上可以运行多个相同镜像的实例。</li>
+<li>项目 (<code>project</code>)：由一组关联的应用容器组成的一个完整业务单元。</li>
+</ul>
+<p>可见，一个项目可以由多个服务（容器）关联而成，<code>Compose</code> 面向项目进行管理。</p>
+</li>
+<li><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><ul>
+<li><h5 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ docker-compose [-f=&lt;arg&gt;...] [options] [COMMAND] [ARGS...]</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="命令选项"><a href="#命令选项" class="headerlink" title="命令选项"></a>命令选项</h5><p><code>-f, --file FILE</code> 指定使用的 Compose 模板文件，默认为 <code>docker-compose.yml</code>，可以多次指定。</p>
+<p><code>-p, --project-name NAME</code> 指定项目名称，默认将使用所在目录名称作为项目名。</p>
+<p><code>--x-networking</code> 使用 Docker 的可拔插网络后端特性</p>
+<p><code>--x-network-driver DRIVER</code> 指定网络后端的驱动，默认为<code>bridge</code></p>
+<p><code>--verbose</code> 输出更多调试信息。</p>
+<p><code>-v, --version</code> 打印版本并退出。</p>
+<ul>
+<li><h5 id="build"><a href="#build" class="headerlink" title="build"></a>build</h5><p>格式为 <code>docker-compose build [options] [SERVICE...]</code>。</p>
+<p>构建（重新构建）项目中的服务容器。服务容器一旦构建后，将会带上一个标记名，例如对于 web 项目中的一个 db 容器，可能是 web_db。</p>
+<p>选项包括：</p>
+<ul>
+<li><code>--force-rm</code> 删除构建过程中的临时容器。</li>
+<li><code>--no-cache</code> 构建镜像过程中不使用 cache（这将加长构建过程）。</li>
+<li><code>--pull</code> 始终尝试通过 pull 来获取更新版本的镜像。</li>
+</ul>
+</li>
+<li><h5 id="config"><a href="#config" class="headerlink" title="config"></a>config</h5><p>验证 Compose 文件格式是否正确，若正确则显示配置，若格式错误显示错误原因。</p>
+</li>
+</ul>
+</li>
+<li><h5 id="down"><a href="#down" class="headerlink" title="down"></a>down</h5><p>此命令将会停止 <code>up</code> 命令所启动的容器，并移除网络</p>
+</li>
+<li><h5 id="start"><a href="#start" class="headerlink" title="start"></a>start</h5><p>格式为 <code>docker-compose start [SERVICE...]</code>。</p>
+<p>启动已经存在的服务容器。</p>
+</li>
+<li><h5 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h5><p>格式为 <code>docker-compose stop [options] [SERVICE...]</code>。</p>
+<p>停止已经处于运行状态的容器，但不删除它。通过 <code>docker-compose start</code> 可以再次启动这些容器。</p>
+<p>选项：</p>
+<ul>
+<li><code>-t, --timeout TIMEOUT</code> 停止容器时候的超时(默认为 10 秒)。</li>
+</ul>
+</li>
+<li><h5 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h5><p>进入指定容器</p>
+</li>
+<li><h5 id="images"><a href="#images" class="headerlink" title="images"></a>images</h5><p> 列出 Compose 文件中包含的镜像。</p>
+</li>
+<li><h5 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h5><p> 格式为 <code>docker-compose kill [options] [SERVICE...]</code>。</p>
+<p> 通过发送 <code>SIGKILL</code> 信号来强制停止服务容器。</p>
+</li>
+<li><h5 id="logs"><a href="#logs" class="headerlink" title="logs"></a>logs</h5><p> 格式为 <code>docker-compose logs [options] [SERVICE...]</code>。</p>
+<p> 该命令在调试问题的时候十分有用。</p>
+</li>
+<li><h5 id="pause"><a href="#pause" class="headerlink" title="pause"></a>pause</h5><p> 格式为 <code>docker-compose pause [SERVICE...]</code>。</p>
+<p> 暂停一个服务容器。</p>
+</li>
+<li><h5 id="unpause"><a href="#unpause" class="headerlink" title="unpause"></a>unpause</h5><p>格式为 <code>docker-compose unpause [SERVICE...]</code>。</p>
+<p>恢复处于暂停状态中的服务。</p>
+</li>
+<li><h5 id="port"><a href="#port" class="headerlink" title="port"></a>port</h5><p>格式为 <code>docker-compose port [options] SERVICE PRIVATE_PORT</code>。</p>
+<p>打印某个容器端口所映射的公共端口。</p>
+</li>
+<li><h5 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h5><p>格式为 <code>docker-compose ps [options] [SERVICE...]</code>。</p>
+<p>列出项目中目前的所有容器。</p>
+</li>
+<li><h5 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h5><p>格式为 <code>docker-compose pull [options] [SERVICE...]</code>。</p>
+<p>拉取服务依赖的镜像。</p>
+<p>选项：</p>
+<ul>
+<li><code>--ignore-pull-failures</code> 忽略拉取镜像过程中的错误。</li>
+</ul>
+</li>
+<li><h5 id="push"><a href="#push" class="headerlink" title="push"></a>push</h5><p>推送服务依赖的镜像到 Docker 镜像仓库。</p>
+</li>
+<li><h5 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h5><p>格式为 <code>docker-compose restart [options] [SERVICE...]</code>。</p>
+<p>重启项目中的服务。</p>
+<ul>
+<li><h5 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h5><p>格式为 <code>docker-compose rm [options] [SERVICE...]</code>。</p>
+<p>删除所有（停止状态的）服务容器。推荐先执行 <code>docker-compose stop</code> 命令来停止容器。</p>
+<p>选项：</p>
+<ul>
+<li><code>-f, --force</code> 强制直接删除，包括非停止状态的容器。一般尽量不要使用该选项。</li>
+<li><code>-v</code> 删除容器所挂载的数据卷。</li>
+</ul>
+</li>
+<li><h5 id="run"><a href="#run" class="headerlink" title="run"></a>run</h5><p>格式为 <code>docker-compose run [options] [-p PORT...] [-e KEY=VAL...] SERVICE [COMMAND] [ARGS...]</code>。</p>
+<p>在指定服务上执行一个命令。</p>
+<p>选项：</p>
+<ul>
+<li><code>-d</code> 后台运行容器。</li>
+<li><code>--name NAME</code> 为容器指定一个名字。</li>
+<li><code>--entrypoint CMD</code> 覆盖默认的容器启动指令。</li>
+<li><code>-e KEY=VAL</code> 设置环境变量值，可多次使用选项来设置多个环境变量。</li>
+<li><code>-u, --user=&quot;&quot;</code> 指定运行容器的用户名或者 uid。</li>
+<li><code>--no-deps</code> 不自动启动关联的服务容器。</li>
+<li><code>--rm</code> 运行命令后自动删除容器，<code>d</code> 模式下将忽略。</li>
+<li><code>-p, --publish=[]</code> 映射容器端口到本地主机。</li>
+<li><code>--service-ports</code> 配置服务端口并映射到本地主机。</li>
+<li><code>-T</code> 不分配伪 tty，意味着依赖 tty 的指令将无法运行。</li>
+</ul>
+</li>
+<li><h5 id="scale"><a href="#scale" class="headerlink" title="scale"></a>scale</h5><p>格式为 <code>docker-compose scale [options] [SERVICE=NUM...]</code>。</p>
+<p>设置指定服务运行的容器个数。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过 service=num 的参数来设置数量</span></span><br><span class="line">$ docker-compose scale web=3 db=2</span><br><span class="line"><span class="comment"># 将启动 3 个容器运行 web 服务，2 个容器运行 db 服务</span></span><br></pre></td></tr></table></figure>
+
+<p>选项：</p>
+<ul>
+<li><code>-t, --timeout TIMEOUT</code> 停止容器时候的超时（默认为 10 秒）。</li>
+</ul>
+</li>
+<li><h5 id="top"><a href="#top" class="headerlink" title="top"></a>top</h5><p>查看各个服务容器内运行的进程。</p>
+</li>
+<li><h5 id="up"><a href="#up" class="headerlink" title="up"></a>up</h5><p>格式为 <code>docker-compose up [options] [SERVICE...]</code>。</p>
+<p>该命令十分强大，它将尝试自动完成包括构建镜像，（重新）创建服务，启动服务，并关联服务相关容器的一系列操作。</p>
+<p>默认情况，<code>docker-compose up</code> 启动的容器都在前台，<code>docker-compose up -d</code>(生产环境下使用)，将会在后台启动并运行所有的容器。</p>
+<p>如果用户不希望容器被停止并重新创建，可以使用 <code>docker-compose up --no-recreate</code>, 只会启动处于停止状态的容器，而忽略已经运行的服务; 如果用户只想重新部署某个服务，可以使用 <code>docker-compose up --no-deps -d &lt;SERVICE_NAME&gt;</code> 来重新创建服务并后台停止旧服务，启动新服务，并不会影响到其所依赖的服务。</p>
+<p>选项：</p>
+<ul>
+<li><code>-d</code> 在后台运行服务容器。</li>
+<li><code>--no-color</code> 不使用颜色来区分不同的服务的控制台输出。</li>
+<li><code>--no-deps</code> 不启动服务所链接的容器。</li>
+<li><code>--force-recreate</code> 强制重新创建容器，不能与 <code>--no-recreate</code> 同时使用。</li>
+<li><code>--no-recreate</code> 如果容器已经存在了，则不重新创建，不能与 <code>--force-recreate</code> 同时使用。</li>
+<li><code>--no-build</code> 不自动构建缺失的服务镜像。</li>
+<li><code>-t, --timeout TIMEOUT</code> 停止容器时候的超时（默认为 10 秒）。</li>
+</ul>
+</li>
+<li><h5 id="version"><a href="#version" class="headerlink" title="version"></a>version</h5><p>格式为 <code>docker-compose version</code>。</p>
+<p>打印版本信息。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Compose-模板文件"><a href="#Compose-模板文件" class="headerlink" title="Compose 模板文件"></a>Compose 模板文件</h3><p>  ​    大部分指令跟 <code>docker run</code> 相关参数的含义都是类似的。默认的模板文件名称为 <code>docker-compose.yml</code>，格式为 YAML 格式。</p>
+<p>  每个服务都必须通过 <code>image</code> 指令指定镜像或 <code>build</code> 指令（需要 Dockerfile）等来自动构建生成镜像。</p>
+<ul>
+<li><h4 id="build-1"><a href="#build-1" class="headerlink" title="build"></a>build</h4><p>指定 <code>Dockerfile</code> 所在文件夹的路径（可以是绝对路径，或者相对 docker-compose.yml 文件的路径）</p>
+<p><code>Compose</code> 将会利用它自动构建这个镜像，然后使用这个镜像。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">webapp:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">./dir</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用<code>context</code> 指令指定 <code>Dockerfile</code> 所在文件夹的路径， <code>dockerfile</code> 指令指定 <code>Dockerfile</code> 文件名， <code>arg</code> 指令指定构建镜像时的变量</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">webapp:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">./dir</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile-alternate</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="attr">buildno:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p> <code>cache_from</code> 指定构建镜像的缓存</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line">  <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">  <span class="attr">cache_from:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">alpine:latest</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">corp/web_app:3.14</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="cap-add-cap-drop"><a href="#cap-add-cap-drop" class="headerlink" title="cap_add, cap_drop"></a>cap_add, cap_drop</h4><p>指定容器的内核能力（capacity）分配</p>
+</li>
+</ul>
+<ul>
+<li><h4 id="command"><a href="#command" class="headerlink" title="command"></a>command</h4><p>覆盖容器启动后默认执行的命令。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">command:</span> <span class="string">echo</span> <span class="string">"hello world"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="cgroup-parent"><a href="#cgroup-parent" class="headerlink" title="cgroup_parent"></a>cgroup_parent</h4><p>指定父 <code>cgroup</code> 组，意味着将继承该组的资源限制。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建了一个 cgroup 组名称为 cgroups_1</span></span><br><span class="line"><span class="attr">cgroup_parent:</span> <span class="string">cgroups_1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="container-name"><a href="#container-name" class="headerlink" title="container_name"></a>container_name</h4><p>指定容器名称。默认将会使用 <code>项目名称_服务名称_序号</code> 这样的格式。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">container_name:</span> <span class="string">docker-web-container</span></span><br></pre></td></tr></table></figure>
+
+<p>注意: 指定容器名称后，该服务将无法进行扩展（scale），因为 Docker 不允许多个容器具有相同的名称。</p>
+</li>
+<li><h4 id="devices"><a href="#devices" class="headerlink" title="devices"></a>devices</h4><p>指定设备映射关系。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">devices:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">"/dev/ttyUSB1:/dev/ttyUSB0"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="depends-on"><a href="#depends-on" class="headerlink" title="depends_on"></a>depends_on</h4><p>解决容器的依赖、启动先后的问题。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">web:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">.</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">postgres</span></span><br></pre></td></tr></table></figure>
+
+<p>例子中会先启动 <code>redis</code> <code>db</code> 再启动 <code>web</code> , <code>web</code> 服务不会等待 <code>redis</code> <code>db</code> 「完全启动」之后才启动。</p>
+</li>
+<li><h4 id="dns"><a href="#dns" class="headerlink" title="dns"></a>dns</h4><p>自定义 <code>DNS</code> 服务器。可以是一个值，也可以是一个列表。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">dns:</span> <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dns:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">114.114</span><span class="number">.114</span><span class="number">.114</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="dns-search"><a href="#dns-search" class="headerlink" title="dns_search"></a>dns_search</h4><p>配置 <code>DNS</code> 搜索域。可以是一个值，也可以是一个列表。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">dns_search:</span> <span class="string">example.com</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dns_search:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">domain1.example.com</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">domain2.example.com</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h4><p>挂载一个 tmpfs 文件系统到容器。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">tmpfs:</span> <span class="string">/run</span></span><br><span class="line"><span class="attr">tmpfs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">/run</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">/tmp</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="env-file"><a href="#env-file" class="headerlink" title="env_file"></a>env_file</h4><p>从文件中获取环境变量，可以为单独的文件路径或列表。</p>
+<p>如果通过 <code>docker-compose -f FILE</code> 方式来指定 Compose 模板文件，则 <code>env_file</code> 中变量的路径会基于模板文件路径。</p>
+<p>如果有变量名称与 <code>environment</code> 指令冲突，则按照惯例，以后者为准。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">env_file:</span> <span class="string">.env</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env_file:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">./common.env</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">./apps/web.env</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">/opt/secrets.env</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="environment"><a href="#environment" class="headerlink" title="environment"></a>environment</h4><p>设置环境变量。可以使用数组或字典两种格式。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">environment:</span></span><br><span class="line">  <span class="attr">RACK_ENV:</span> <span class="string">development</span></span><br><span class="line">  <span class="attr">SESSION_SECRET:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">environment:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">RACK_ENV=development</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">SESSION_SECRET</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="expose"><a href="#expose" class="headerlink" title="expose"></a>expose</h4><p>暴露端口，但不映射到宿主机，只被连接的服务访问。</p>
+<p>仅可以指定内部端口为参数</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">expose:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"3000"</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"8000"</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><h4 id="extra-hosts"><a href="#extra-hosts" class="headerlink" title="extra_hosts"></a>extra_hosts</h4><p>指定额外的 host 名称映射信息</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">extra_hosts:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"googledns:8.8.8.8"</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"dockerhub:52.1.157.61"</span></span><br></pre></td></tr></table></figure>
+
+<p>会在启动后的服务容器中 <code>/etc/hosts</code> 文件中添加如下两条条目。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">8.8.8.8 googledns</span><br><span class="line">52.1.157.61 dockerhub</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="image"><a href="#image" class="headerlink" title="image"></a>image</h4><p>指定为镜像名称或镜像 ID。如果镜像在本地不存在，<code>Compose</code> 将会尝试拉取这个镜像。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="string">ubuntu</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">orchardup/postgresql</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">a4bc65fd</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="labels"><a href="#labels" class="headerlink" title="labels"></a>labels</h4><p>为容器添加 Docker 元数据（metadata）信息。例如可以为容器添加辅助说明信息。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">labels:</span></span><br><span class="line">  <span class="attr">com.startupteam.description:</span> <span class="string">"webapp for a startup team"</span></span><br><span class="line">  <span class="attr">com.startupteam.department:</span> <span class="string">"devops department"</span></span><br><span class="line">  <span class="attr">com.startupteam.release:</span> <span class="string">"rc3 for v1.0"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h4><p>配置日志选项。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="comment"># 目前支持三种日志驱动类型 json-file syslog none</span></span><br><span class="line">  <span class="attr">driver:</span> <span class="string">syslog</span></span><br><span class="line">  <span class="attr">options:</span></span><br><span class="line">    <span class="attr">syslog-address:</span> <span class="string">"tcp://192.168.0.42:123"</span></span><br><span class="line">  <span class="comment"># options:</span></span><br><span class="line">  <span class="comment">#   max-size: "200k"</span></span><br><span class="line">  <span class="comment">#   max-file: "10"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="network-mode"><a href="#network-mode" class="headerlink" title="network_mode"></a>network_mode</h4><p>设置网络模式。使用和 <code>docker run</code> 的 <code>--network</code> 参数一样的值。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">network_mode:</span> <span class="string">"bridge"</span></span><br><span class="line"><span class="attr">network_mode:</span> <span class="string">"host"</span></span><br><span class="line"><span class="attr">network_mode:</span> <span class="string">"none"</span></span><br><span class="line"><span class="attr">network_mode:</span> <span class="string">"service:[service name]"</span></span><br><span class="line"><span class="attr">network_mode:</span> <span class="string">"container:[container name/id]"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="networks"><a href="#networks" class="headerlink" title="networks"></a>networks</h4><p>配置容器连接的网络。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">some-service:</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">some-network</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">other-network</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">some-network:</span></span><br><span class="line">  <span class="attr">other-network:</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="pid"><a href="#pid" class="headerlink" title="pid"></a>pid</h4><p>跟主机系统共享进程命名空间。打开该选项的容器之间，以及容器和宿主机系统之间可以通过进程 ID 来相互访问和操作。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pid:</span> <span class="string">"host"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="ports"><a href="#ports" class="headerlink" title="ports"></a>ports</h4><p>暴露端口信息。</p>
+<p>使用宿主端口：容器端口 <code>(HOST:CONTAINER)</code> 格式，或者仅仅指定容器的端口（宿主将会随机选择端口）都可以。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">ports:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"3000"</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"8000:8000"</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"49100:22"</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">"127.0.0.1:8001:8001"</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><h4 id="volumes"><a href="#volumes" class="headerlink" title="volumes"></a>volumes</h4><p>数据卷所挂载路径设置。可以设置为宿主机路径(<code>HOST:CONTAINER</code>)或者数据卷名称(<code>VOLUME:CONTAINER</code>)，并且可以设置访问模式 （<code>HOST:CONTAINER:ro</code>）。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">volumes:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">/var/lib/mysql</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">cache/:/tmp/cache</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">~/configs:/etc/configs/:ro</span></span><br></pre></td></tr></table></figure>
+
+<p>如果路径为数据卷名称，必须在文件中配置数据卷。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">my_src:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql:8.0</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mysql_data:/var/lib/mysql</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">mysql_data:</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://jingyu.life/2020/08/02/docker/compose/>https://jingyu.life/2020/08/02/docker/compose/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-09T13:49:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>本页文档最后更新于：2020年8月9日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/docker/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Docker</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://jingyu.life/2020/08/02/docker/compose/&title=Docker 进阶篇之Compose - Jingyu_Blog&summary=
+Compose 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://jingyu.life/2020/08/02/docker/compose/&title=Docker 进阶篇之Compose - Jingyu_Blog&summary=
+Compose 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://jingyu.life/2020/08/02/docker/compose/&title=Docker 进阶篇之Compose - Jingyu_Blog&summary=
+Compose 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/07/31/docker/basic/'>
+                <p class='title'>Docker 基础篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+Docker是一种运行在Linux和Windows上的软件，用于创建、管理和编排容器
+
+
+
+安装
+Ubuntu
+移除旧版本
+$ sudo apt-get remove docker \    ...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Docker 进阶篇之Compose',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper blur desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装与卸载"><span class="toc-text">安装与卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#卸载"><span class="toc-text">卸载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用以及说明"><span class="toc-text">使用以及说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#术语"><span class="toc-text">术语</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#命令"><span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本格式"><span class="toc-text">基本格式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令选项"><span class="toc-text">命令选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#build"><span class="toc-text">build</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#down"><span class="toc-text">down</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#start"><span class="toc-text">start</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#stop"><span class="toc-text">stop</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#exec"><span class="toc-text">exec</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#images"><span class="toc-text">images</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kill"><span class="toc-text">kill</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#logs"><span class="toc-text">logs</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pause"><span class="toc-text">pause</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#unpause"><span class="toc-text">unpause</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#port"><span class="toc-text">port</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ps"><span class="toc-text">ps</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pull"><span class="toc-text">pull</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#push"><span class="toc-text">push</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#restart"><span class="toc-text">restart</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rm"><span class="toc-text">rm</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#scale"><span class="toc-text">scale</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#top"><span class="toc-text">top</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#up"><span class="toc-text">up</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#version"><span class="toc-text">version</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compose-模板文件"><span class="toc-text">Compose 模板文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#build-1"><span class="toc-text">build</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cap-add-cap-drop"><span class="toc-text">cap_add, cap_drop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#command"><span class="toc-text">command</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cgroup-parent"><span class="toc-text">cgroup_parent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#container-name"><span class="toc-text">container_name</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#devices"><span class="toc-text">devices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#depends-on"><span class="toc-text">depends_on</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dns"><span class="toc-text">dns</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dns-search"><span class="toc-text">dns_search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tmpfs"><span class="toc-text">tmpfs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#env-file"><span class="toc-text">env_file</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#environment"><span class="toc-text">environment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#expose"><span class="toc-text">expose</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#extra-hosts"><span class="toc-text">extra_hosts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#image"><span class="toc-text">image</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#labels"><span class="toc-text">labels</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#logging"><span class="toc-text">logging</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#network-mode"><span class="toc-text">network_mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#networks"><span class="toc-text">networks</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pid"><span class="toc-text">pid</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ports"><span class="toc-text">ports</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#volumes"><span class="toc-text">volumes</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.3'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='5090178889'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="https://github.com/jingyucute"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:jingyucute@gmail.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=360214433"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="http://jingyu.life">Copyright © 2020 Jingyu</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/wallpaper/light-blue.jpeg"];
+        if ('' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

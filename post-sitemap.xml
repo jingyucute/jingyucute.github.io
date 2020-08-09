@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://jingyu.life/2020/08/02/docker/compose/</loc>
+        <lastmod>2020-08-09T05:49:57.401Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://jingyu.life/2020/07/31/docker/basic/</loc>
         <lastmod>2020-08-01T09:22:24.592Z</lastmod>
         <changefreq>weekly</changefreq>
