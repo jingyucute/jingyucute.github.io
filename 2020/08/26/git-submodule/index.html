@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,14 @@
 
   <!-- 页面元数据 -->
   
-    <title>分类：工具 - Jingyu_Blog</title>
+    <title>git 子模块 - Jingyu_Blog</title>
   
+    <meta name="keywords" content="Git">
+  
+  
+    <meta name="description" content="
+经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+">
   
 
   <!-- feed -->
@@ -379,27 +383,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -409,11 +398,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2020/07/28/tool-assistant/">
-      常用工具网址
+  <h1 class="title">
+    <a href="/2020/08/26/git-submodule/">
+      git 子模块
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -436,9 +425,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%B7%A5%E5%85%B7/' rel="nofollow">
+    <a href='/categories/%E5%BC%80%E5%8F%91/%E7%8E%AF%E5%A2%83/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>工具</p>
+      <p>开发/环境</p>
     </a>
   </div>
 
@@ -449,7 +438,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月28日</p>
+    <p>发布于：2020年8月26日</p>
   </a>
 </div>
 
@@ -460,13 +449,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：45字</p>
+      <p>字数：645字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
+      <p>时长：2分钟</p>
     </a>
   </div>
 
@@ -487,157 +476,215 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>这里记录一些常用的工具、网址等等</p>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <blockquote>
+<p>经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！</p>
 </blockquote>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/07/28/tool-assistant/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+<a id="more"></a>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+<h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接clone，会在当前目录生成一个对应子目录存放仓库内容</span></span><br><span class="line">$ git submodule add &lt;submodule_url&gt; [path/submoduleName]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化本地.gitmodules文件</span></span><br><span class="line">$ git submodule init  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 同步远端submodule源码</span></span><br><span class="line">$ git submodule update  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取主项目和所有子项目源码</span></span><br><span class="line">$ git <span class="built_in">clone</span> --recurse-submodules &lt;main_project_url&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看-amp-更新"><a href="#查看-amp-更新" class="headerlink" title="查看 &amp; 更新"></a>查看 &amp; 更新</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看子模块</span></span><br><span class="line">$ git submodule</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新项目内子模块到最新版本</span></span><br><span class="line">$ git submodule update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新子模块为远程项目的最新版本</span></span><br><span class="line">$ git submodule update --remote</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除子模块"><a href="#删除子模块" class="headerlink" title="删除子模块"></a>删除子模块</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1、 删除子模块文件夹</span></span><br><span class="line">$ git rm --cached &lt;submodule&gt;</span><br><span class="line">$ rm -rf &lt;submodule&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、删除.gitmodules文件中相关子模块信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、删除.git/config中的相关子模块信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、删除.git文件夹中的相关子模块文件</span></span><br><span class="line">$ rm -rf .git/modules/&lt;submodule&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><ul>
+<li><h4 id="向上同步"><a href="#向上同步" class="headerlink" title="向上同步"></a>向上同步</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 当子模块有未被使用的新提交时（例如在 sub-module.git 中执行 git pull --rebase 拉取新的内容后），git 会给予提示</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将子模块的内容同步到主仓库，只需要在主仓库中创建一个新的提交即可</span></span><br><span class="line">$ git add submodule</span><br><span class="line">$ git commit -m <span class="string">"message"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="向下同步"><a href="#向下同步" class="headerlink" title="向下同步"></a>向下同步</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 主要是更新</span></span><br><span class="line">$ git submodule update</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol>
+<li>当子模块有提交的时候,没有push到远程仓库, 父级引用子模块的commit更新,并提交到远程仓库, 当别人拉取代码的时候就会报出子模块的commit不存在 <code>fatal: reference isn’t a tree</code> 。</li>
+<li>如果你仅仅引用了别人的子模块的游离分支,然后在主仓库修改了子仓库的代码,之后使用<code>git submodule update</code>拉取了最新代码,那么你在子仓库游离分支做出的修改会被覆盖掉。</li>
+<li>我们假设你一开始在主仓库并没有采用子模块的开发方式,而是在另外的开发分支使用了子仓库,那么当你从开发分支切回到没有采用子模块的分支的时候,子模块的目录并不会被Git自动删除,而是需要你手动的删除了。</li>
+</ol>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
   
 
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/06/25/typora-usage/">
-      Typora快捷键使用(Mac)
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://jingyu.life" rel="nofollow">
-    <img src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/avatar/young.jpg">
-    <p>Jingyu</p>
-  </a>
-</div>
-
-            
-          
-            
-              
   
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%B7%A5%E5%85%B7/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>工具</p>
-    </a>
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://jingyu.life/2020/08/26/git-submodule/>https://jingyu.life/2020/08/26/git-submodule/</a></p>
+          
+        
+      </blockquote>
+    
   </div>
+</section>
+
+  
 
 
-            
+              
+            </div>
           
-            
-              <div class="new-meta-item date">
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-27T11:45:41+08:00">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月25日</p>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>本页文档最后更新于：2020年8月27日</p>
   </a>
 </div>
 
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：965字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：4分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
         
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>简介</p>
-<p>刚开始搭建自己的博客， 学习了一下Markdown语法和Typora，这里记录了一下相关快捷键的使用。</p>
-</blockquote>
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/git/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Git</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://jingyu.life/2020/08/26/git-submodule/&title=git 子模块 - Jingyu_Blog&summary=
+经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://jingyu.life/2020/08/26/git-submodule/&title=git 子模块 - Jingyu_Blog&summary=
+经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://jingyu.life/2020/08/26/git-submodule/&title=git 子模块 - Jingyu_Blog&summary=
+经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/06/25/typora-usage/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
   </section>
-</article>
 
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/08/09/git-usage/'>
+                <p class='title'>git学习篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+本文不是记录所有的命令， 会将部分命令做一个简易说明
+
+​    
+
+
+看懂上面的流程， 就可以大致知道自己要进行什么操作，以及怎样操作
+安装   安装的话， 自己搜一下吧， 问题应该不大
+新...</p>
+              </a>
+            
           </div>
         
-      
-    
-  </section>
+      </section>
+    </article>
   
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
 
   
 
 
-    
   
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'git 子模块',
+      tools: true
+    }
+  </script>
+
 
 </div>
 <aside class='l_side'>
@@ -646,195 +693,19 @@
     
     
 
-<section class="widget blogger blur desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/avatar/young.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Jingyu_Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="https://github.com/jingyucute"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="mailto:jingyucute@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=360214433"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget grid blur desktop mobile">
-  
-  <header>
-    
-      <i class="fas fa-map-signs fa-fw" aria-hidden="true"></i><span class='name'>导航</span>
-    
-  </header>
 
 
-  <div class='content'>
-    <div class="grid navigation fixed">
-      
-        <a class="flat-box" title="/archives" href="/archives"
-          
-          
-          id="archives">
-          
-            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
-          
-          归档
-        </a>
-      
-        <a class="flat-box" title="/friends" href="/friends"
-          
-          
-          id="friends">
-          
-            <i class="fas fa-users fa-fw" aria-hidden="true"></i>
-          
-          友链
-        </a>
-      
-        <a class="flat-box" title="/books" href="/books"
-          
-          
-          id="books">
-          
-            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
-          
-          书籍
-        </a>
-      
-        <a class="flat-box" title="/atom.xml" href="/atom.xml"
-          
-          
-          id="atomxml">
-          
-            <i class="fas fa-rss fa-fw" aria-hidden="true"></i>
-          
-          RSS
-        </a>
-      
-        <a class="flat-box" title="https://github.com/xaoxuu/hexo-theme-volantis/" href="https://github.com/xaoxuu/hexo-theme-volantis/"
-          
-            rel="external nofollow noopener noreferrer"
-          
-          
-            target="_blank"
-          
-          id="https:githubcomxaoxuuhexo-theme-volantis">
-          
-            <i class="fas fa-file-code fa-fw" aria-hidden="true"></i>
-          
-          主题源码
-        </a>
-      
-    </div>
-  </div>
-</section>
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget category blur desktop">
+  <section class="widget toc-wrapper blur desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%B7%A5%E5%85%B7/" href="/categories/%E5%B7%A5%E5%85%B7/"
-            id="categoriesE5B7A5E585B7"
-            ><div class='name'>工具</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BC%80%E5%8F%91/" href="/categories/%E5%BC%80%E5%8F%91/"
-            id="categoriesE5BC80E58F91"
-            ><div class='name'>开发</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%BC%80%E5%8F%91/%E7%8E%AF%E5%A2%83/" href="/categories/%E5%BC%80%E5%8F%91/%E7%8E%AF%E5%A2%83/"
-            id="categoriesE5BC80E58F91E78EAFE5A283"
-            ><div class='name'>环境</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E8%BF%90%E7%BB%B4/" href="/categories/%E8%BF%90%E7%BB%B4/"
-            id="categoriesE8BF90E7BBB4"
-            ><div class='name'>运维</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud blur desktop mobile">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/docker/" style="font-size: 24px; color: #555">Docker</a> <a href="/tags/git/" style="font-size: 24px; color: #555">Git</a> <a href="/tags/helper/" style="font-size: 14px; color: #999">Helper</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">MarkDown</a> <a href="/tags/node/" style="font-size: 14px; color: #999">Node</a> <a href="/tags/nvm/" style="font-size: 14px; color: #999">Nvm</a> <a href="/tags/typora/" style="font-size: 14px; color: #999">Typora</a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加子模块"><span class="toc-text">添加子模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看-amp-更新"><span class="toc-text">查看 &amp; 更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除子模块"><span class="toc-text">删除子模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步"><span class="toc-text">同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#向上同步"><span class="toc-text">向上同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向下同步"><span class="toc-text">向下同步</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意点"><span class="toc-text">注意点</span></a></li></ol>
     </div>
   </section>
 
