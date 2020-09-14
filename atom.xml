@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jingyu.life/"/>
-  <updated>2020-08-27T03:45:41.801Z</updated>
+  <updated>2020-09-14T08:33:36.249Z</updated>
   <id>https://jingyu.life/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql中的时间函数以及格式问题</title>
+    <link href="https://jingyu.life/2020/09/12/mysql/time-func/"/>
+    <id>https://jingyu.life/2020/09/12/mysql/time-func/</id>
+    <published>2020-09-12T05:54:54.000Z</published>
+    <updated>2020-09-14T08:33:36.249Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;之前在开发过程中， 碰到数据库关于时间的问题，总是要去搜索一下， 自己简单记录一下常用的吧，后面遇到啥新鲜的玩意， 再加上。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="https://jingyu.life/categories/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Mysql" scheme="https://jingyu.life/categories/%E5%BC%80%E5%8F%91/mysql/"/>
+    
+    
+      <category term="Mysql" scheme="https://jingyu.life/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>git 子模块</title>
@@ -46,7 +71,7 @@
     <link href="https://jingyu.life/2020/08/09/git-usage/"/>
     <id>https://jingyu.life/2020/08/09/git-usage/</id>
     <published>2020-08-09T05:54:54.000Z</published>
-    <updated>2020-08-26T09:47:32.054Z</updated>
+    <updated>2020-09-13T14:21:18.473Z</updated>
     
     <summary type="html">
     
@@ -169,7 +194,7 @@
     <link href="https://jingyu.life/2020/06/25/typora-usage/"/>
     <id>https://jingyu.life/2020/06/25/typora-usage/</id>
     <published>2020-06-24T16:00:00.000Z</published>
-    <updated>2020-08-01T09:03:07.770Z</updated>
+    <updated>2020-08-27T03:14:23.787Z</updated>
     
     <summary type="html">
     
