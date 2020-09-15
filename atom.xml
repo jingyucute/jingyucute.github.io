@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jingyu.life/"/>
-  <updated>2020-09-14T08:33:36.249Z</updated>
+  <updated>2020-09-15T07:09:14.916Z</updated>
   <id>https://jingyu.life/</id>
   
   <author>
@@ -18,15 +18,40 @@
   
   <entry>
     <title>mysql中的时间函数以及格式问题</title>
-    <link href="https://jingyu.life/2020/09/12/mysql/time-func/"/>
-    <id>https://jingyu.life/2020/09/12/mysql/time-func/</id>
-    <published>2020-09-12T05:54:54.000Z</published>
-    <updated>2020-09-14T08:33:36.249Z</updated>
+    <link href="https://jingyu.life/2020/09/14/mysql/time-func/"/>
+    <id>https://jingyu.life/2020/09/14/mysql/time-func/</id>
+    <published>2020-09-14T05:54:54.000Z</published>
+    <updated>2020-09-15T07:09:14.916Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;之前在开发过程中， 碰到数据库关于时间的问题，总是要去搜索一下， 自己简单记录一下常用的吧，后面遇到啥新鲜的玩意， 再加上。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="https://jingyu.life/categories/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Mysql" scheme="https://jingyu.life/categories/%E5%BC%80%E5%8F%91/mysql/"/>
+    
+    
+      <category term="Mysql" scheme="https://jingyu.life/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql基础用法</title>
+    <link href="https://jingyu.life/2020/09/12/mysql/basic-usage/"/>
+    <id>https://jingyu.life/2020/09/12/mysql/basic-usage/</id>
+    <published>2020-09-12T05:54:54.000Z</published>
+    <updated>2020-09-15T09:51:45.026Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;不知道写啥， 简单记录一下数据库的相关操作吧，结合实例&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>

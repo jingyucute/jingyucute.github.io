@@ -16,13 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>git 子模块 - Jingyu_Blog</title>
+    <title>mysql基础用法 - Jingyu_Blog</title>
   
-    <meta name="keywords" content="Git">
+    <meta name="keywords" content="Mysql">
   
   
     <meta name="description" content="
-经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+不知道写啥， 简单记录一下数据库的相关操作吧，结合实例
 ">
   
 
@@ -399,8 +399,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/08/26/git-submodule/">
-      git 子模块
+    <a href="/2020/09/12/mysql/basic-usage/">
+      mysql基础用法
     </a>
   </h1>
 
@@ -425,9 +425,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%BC%80%E5%8F%91/%E7%8E%AF%E5%A2%83/' rel="nofollow">
+    <a href='/categories/%E5%BC%80%E5%8F%91/mysql/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>开发/环境</p>
+      <p>开发/Mysql</p>
     </a>
   </div>
 
@@ -438,7 +438,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年8月26日</p>
+    <p>发布于：2020年9月12日</p>
   </a>
 </div>
 
@@ -449,13 +449,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：645字</p>
+      <p>字数：1.2k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2分钟</p>
+      <p>时长：6分钟</p>
     </a>
   </div>
 
@@ -481,28 +481,64 @@
           
           
           <blockquote>
-<p>经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！</p>
+<p>不知道写啥， 简单记录一下数据库的相关操作吧，结合实例</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接clone，会在当前目录生成一个对应子目录存放仓库内容</span></span><br><span class="line">$ git submodule add &lt;submodule_url&gt; [path/submoduleName]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化本地.gitmodules文件</span></span><br><span class="line">$ git submodule init  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 同步远端submodule源码</span></span><br><span class="line">$ git submodule update  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取主项目和所有子项目源码</span></span><br><span class="line">$ git <span class="built_in">clone</span> --recurse-submodules &lt;main_project_url&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查看</span><br><span class="line">SHOW DATABASES;</span><br><span class="line">-- 创建</span><br><span class="line">CREATE  DATABASE &#96;test&#96; DEFAULT CHARACTER SET utf8mb4;</span><br><span class="line">-- 删除</span><br><span class="line">DROP DATABASE &#96;test&#96;</span><br></pre></td></tr></table></figure>
 
-<h3 id="查看-amp-更新"><a href="#查看-amp-更新" class="headerlink" title="查看 &amp; 更新"></a>查看 &amp; 更新</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看子模块</span></span><br><span class="line">$ git submodule</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新项目内子模块到最新版本</span></span><br><span class="line">$ git submodule update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新子模块为远程项目的最新版本</span></span><br><span class="line">$ git submodule update --remote</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除子模块"><a href="#删除子模块" class="headerlink" title="删除子模块"></a>删除子模块</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1、 删除子模块文件夹</span></span><br><span class="line">$ git rm --cached &lt;submodule&gt;</span><br><span class="line">$ rm -rf &lt;submodule&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、删除.gitmodules文件中相关子模块信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、删除.git/config中的相关子模块信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、删除.git文件夹中的相关子模块文件</span></span><br><span class="line">$ rm -rf .git/modules/&lt;submodule&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><ul>
-<li><h4 id="向上同步"><a href="#向上同步" class="headerlink" title="向上同步"></a>向上同步</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 当子模块有未被使用的新提交时（例如在 sub-module.git 中执行 git pull --rebase 拉取新的内容后），git 会给予提示</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将子模块的内容同步到主仓库，只需要在主仓库中创建一个新的提交即可</span></span><br><span class="line">$ git add submodule</span><br><span class="line">$ git commit -m <span class="string">"message"</span></span><br></pre></td></tr></table></figure>
+<h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3><blockquote>
+<p>说明： 在上面创建的test数据库中创建三张表， teacher(教师表)， students(学生表)， class(班级表)</p>
+<p>Teachers (t_id, name, age, sex, email, phone)</p>
+<p>Students(stu_id, name, age, sex, class_id) </p>
+<p>Class(id, name, t_id)   t_id -&gt; 班主任 name其实可以细化为 年级号、 班号啥的</p>
+</blockquote>
+<ol>
+<li><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- teachers</span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;teachers&#96;(</span><br><span class="line">    &#96;t_id&#96; INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    &#96;name&#96; VARCHAR(30) NOT NULL DEFAULT &#39;&#39;,</span><br><span class="line">    &#96;sex&#96; TINYINT(1) NOT NULL DEFAULT 0 COMMENT &#39;0 -&gt; 女; 1 -&gt; 男&#39;,</span><br><span class="line">    &#96;age&#96; TINYINT NOT NULL DEFAULT 0,</span><br><span class="line">    &#96;phone&#96; VARCHAR(20) NOT NULL DEFAULT &#39;&#39;,</span><br><span class="line">    &#96;email&#96; VARCHAR(50) NOT NULL DEFAULT &#39;&#39;,</span><br><span class="line">    &#96;created_at&#96; TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">    &#96;updated_at&#96; TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">); </span><br><span class="line"></span><br><span class="line">-- class</span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;class&#96;(</span><br><span class="line">    &#96;id&#96; INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    &#96;name&#96; VARCHAR(30) NOT NULL DEFAULT &#39;&#39;,</span><br><span class="line">    &#96;t_id&#96; INT NOT NULL DEFAULT 0,</span><br><span class="line">    &#96;created_at&#96; TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">    &#96;updated_at&#96; TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- students;</span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;students&#96;(</span><br><span class="line">    &#96;stu_id&#96; INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    &#96;name&#96; VARCHAR(30) NOT NULL DEFAULT &#39;&#39;,</span><br><span class="line">    &#96;sex&#96; TINYINT(1) NOT NULL DEFAULT 0 COMMENT &#39;0 -&gt; 女; 1 -&gt; 男&#39;,</span><br><span class="line">    &#96;age&#96; TINYINT NOT NULL DEFAULT 0,</span><br><span class="line">    &#96;class_id&#96; INT NOT NULL DEFAULT 0,</span><br><span class="line">    &#96;created_at&#96; TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">    &#96;updated_at&#96; TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- 查看创建的表</span><br><span class="line">mysql&gt; SHOW TABLES;</span><br><span class="line">+----------------+</span><br><span class="line">| Tables_in_test |</span><br><span class="line">+----------------+</span><br><span class="line">| class          |</span><br><span class="line">| students       |</span><br><span class="line">| teachers       |</span><br><span class="line">+----------------+</span><br><span class="line"></span><br><span class="line">mysql&gt; DESC teachers;</span><br><span class="line">+------------+------------------+------+-----+-------------------+-----------------------------+</span><br><span class="line">| Field      | Type             | Null | Key | Default           | Extra                       |</span><br><span class="line">+------------+------------------+------+-----+-------------------+-----------------------------+</span><br><span class="line">| t_id       | int(10) unsigned | NO   | PRI | NULL              | auto_increment              |</span><br><span class="line">| name       | varchar(30)      | NO   |     |                   |                             |</span><br><span class="line">| sex        | tinyint(1)       | NO   |     | 0                 |                             |</span><br><span class="line">| age        | tinyint(4)       | NO   |     | 0                 |                             |</span><br><span class="line">| phone      | varchar(20)      | NO   |     |                   |                             |</span><br><span class="line">| email      | varchar(50)      | NO   |     |                   |                             |</span><br><span class="line">| created_at | timestamp        | NO   |     | CURRENT_TIMESTAMP |                             |</span><br><span class="line">| updated_at | timestamp        | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |</span><br><span class="line">+------------+------------------+------+-----+-------------------+-----------------------------+</span><br></pre></td></tr></table></figure>
 </li>
-<li><h4 id="向下同步"><a href="#向下同步" class="headerlink" title="向下同步"></a>向下同步</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 主要是更新</span></span><br><span class="line">$ git submodule update</span><br></pre></td></tr></table></figure>
+<li><h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 改表名</span><br><span class="line">ALTER TABLE &#96;table&#96; RENAME TO &#96;new_table_name&#96;;</span><br><span class="line"></span><br><span class="line">-- 添加字段</span><br><span class="line">ALTER TABLE &#96;table&#96; ADD [COLUMN] &#96;column&#96; ···</span><br><span class="line">-- ALTER TABLE &#96;table_name&#96; ADD COLUMN &#96;created_at&#96; TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP</span><br><span class="line"></span><br><span class="line">-- 修改字段</span><br><span class="line">ALTER TABLE &#96;table&#96; MODIFY [COLUMN] &#96;column&#96; ···</span><br><span class="line"></span><br><span class="line">-- 字段改名</span><br><span class="line">ALTER TABLE &#96;table&#96; CHANGE &#96;column&#96; &#96;new_column&#96; ···</span><br><span class="line"></span><br><span class="line">-- 删除字段</span><br><span class="line">ALTER TABLE &#96;table&#96; DROP COLUMN &#96;column&#96;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DROP TABLE &#96;table_name&#96;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="数据表的操作"><a href="#数据表的操作" class="headerlink" title="数据表的操作"></a>数据表的操作</h3><ul>
+<li><h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 向teacher表插入数据</span><br><span class="line">INSERT INTO &#96;teachers&#96;(&#96;name&#96;, &#96;sex&#96;, &#96;age&#96;) VALUES (&#39;teacher1&#39;, 0, 35),(&#39;teacher2&#39;, 0, 30),(&#39;teacher3&#39;, 1, 35),(&#39;teacher4&#39;, 0, 37),(&#39;teacher5&#39;, 0, 35),(&#39;teacher6&#39;, 1, 29),</span><br><span class="line">(&#39;teacher7&#39;, 0, 35),(&#39;teacher8&#39;, 0, 27),(&#39;teacher9&#39;, 1, 35),(&#39;teacher10&#39;, 0, 43);</span><br><span class="line"></span><br><span class="line">-- 向class表插入数据</span><br><span class="line">INSERT INTO &#96;class&#96;(&#96;name&#96;, &#96;t_id&#96;) VALUES(&#39;class1&#39;, 1),(&#39;class2&#39;, 7),(&#39;class3&#39;, 6),(&#39;class4&#39;, 9),(&#39;class5&#39;, 4);</span><br><span class="line"></span><br><span class="line">-- 向students表插入数据</span><br><span class="line">INSERT INTO &#96;students&#96;(&#96;name&#96;, &#96;sex&#96;, &#96;age&#96;, &#96;class_id&#96;) VALUES (&#39;stu1&#39;, 0, 17, 1),(&#39;stu2&#39;, 1, 16, 3),(&#39;stu3&#39;, 1, 17, 4),(&#39;stu4&#39;, 0, 16, 3),</span><br><span class="line">(&#39;stu5&#39;, 0, 17, 3),(&#39;stu6&#39;, 1, 17, 5),(&#39;stu6&#39;, 0, 16, 3),(&#39;stu8&#39;, 1, 18, 2),(&#39;stu9&#39;, 0, 17, 3),(&#39;stu10&#39;, 1, 16, 4),(&#39;stu11&#39;, 1, 17, 3),</span><br><span class="line">(&#39;stu12&#39;, 0, 17, 2),(&#39;stu13&#39;, 0, 18, 1),(&#39;stu14&#39;, 1, 17, 5),(&#39;stu15&#39;, 0, 18, 4),(&#39;stu16&#39;, 0, 17, 3),(&#39;stu17&#39;, 1, 18, 2),(&#39;stu17&#39;, 0, 17, 2),</span><br><span class="line">(&#39;stu19&#39;, 0, 17, 5),(&#39;stu20&#39;, 1, 18, 4),(&#39;stu21&#39;, 1, 16, 3),(&#39;stu22&#39;, 0, 17, 3),(&#39;stu23&#39;, 0, 17, 1),(&#39;stu24&#39;, 1, 16, 3),(&#39;stu25&#39;, 1, 17, 1),</span><br><span class="line">(&#39;stu26&#39;, 0, 18, 3),(&#39;stu27&#39;, 1, 17, 4),(&#39;stu28&#39;, 0, 16, 3),(&#39;stu29&#39;, 0, 17, 4),(&#39;stu39&#39;, 1, 18, 3);</span><br><span class="line"></span><br><span class="line">-- 创建好的表， 自己做一个备份吧，后面可能要还原数据</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 简单删除</span><br><span class="line">DELETE FROM teachers WHERE t_id &#x3D; 10;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 简单更改</span><br><span class="line">UPDATE &#96;teachers&#96; SET email &#x3D; &#39;test@gmail.com&#39; WHERE &#96;name&#96; &#x3D; &#39;teacher3&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 简单查询</span><br><span class="line">SELECT * FROM &#96;teachers&#96;; </span><br><span class="line"></span><br><span class="line">SELECT &#96;name&#96;, class_id FROM &#96;students&#96;;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol>
-<li>当子模块有提交的时候,没有push到远程仓库, 父级引用子模块的commit更新,并提交到远程仓库, 当别人拉取代码的时候就会报出子模块的commit不存在 <code>fatal: reference isn’t a tree</code> 。</li>
-<li>如果你仅仅引用了别人的子模块的游离分支,然后在主仓库修改了子仓库的代码,之后使用<code>git submodule update</code>拉取了最新代码,那么你在子仓库游离分支做出的修改会被覆盖掉。</li>
-<li>我们假设你一开始在主仓库并没有采用子模块的开发方式,而是在另外的开发分支使用了子仓库,那么当你从开发分支切回到没有采用子模块的分支的时候,子模块的目录并不会被Git自动删除,而是需要你手动的删除了。</li>
+<h3 id="按需完成相关操作"><a href="#按需完成相关操作" class="headerlink" title="按需完成相关操作"></a>按需完成相关操作</h3><ol>
+<li><p>查询每个班的班主任信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM &#96;teachers&#96; WHERE t_id IN (</span><br><span class="line">   SELECT t_id FROM &#96;class&#96; </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">SELECT teachers.* FROM &#96;class&#96; JOIN &#96;teachers&#96; on class.t_id &#x3D; &#96;teachers&#96;.t_id ;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询每个班的人数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT a.id, a.&#96;name&#96;, count(b.class_id) FROM &#96;class&#96; AS a  LEFT JOIN &#96;students&#96; AS b ON a.id &#x3D; b.class_id GROUP BY a.id ;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询每个班主任所带班级的平均年龄, 包括班主任信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT a.t_id, a.&#96;name&#96;, a.&#96;age&#96;, a.&#96;sex&#96;, a.&#96;email&#96;, a.&#96;phone&#96;, b.&#96;name&#96; as class_name, avg(c.&#96;age&#96;) as class_avg_age FROM &#96;teachers&#96; as a</span><br><span class="line">JOIN &#96;class&#96; as b on a.t_id &#x3D; b.t_id</span><br><span class="line">JOIN &#96;students&#96; as c on b.id &#x3D; c.class_id</span><br><span class="line">GROUP BY a.t_id,b.id ;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将teacher4老师所带班级的名叫stu6的学生的年纪修改为18岁</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 多表连接更新</span><br><span class="line">UPDATE teachers as a </span><br><span class="line">JOIN class as b on a.t_id &#x3D; b.t_id</span><br><span class="line">JOIN students as c on b.id &#x3D; c.class_id</span><br><span class="line">SET c.age &#x3D; 18</span><br><span class="line">WHERE a.&#96;name&#96; &#x3D; &#39;teacher4&#39; and c.&#96;name&#96; &#x3D; &#39;stu6&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将teacher6老师所带班级的名叫stu39的学生的记录删除</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 多表连接删除</span><br><span class="line">DELETE c from teachers as a </span><br><span class="line">JOIN class as b on a.t_id &#x3D; b.t_id</span><br><span class="line">JOIN students as c on b.id &#x3D; c.class_id</span><br><span class="line">WHERE a.&#96;name&#96; &#x3D; &#39;teacher6&#39; and c.&#96;name&#96; &#x3D; &#39;stu39&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
 </ol>
+<blockquote>
+<p>mmp ， 先写这么多吧，后面用到了在加上。</p>
+</blockquote>
 
           
             <div class='article_footer'>
@@ -539,7 +575,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://jingyu.life/2020/08/26/git-submodule/>https://jingyu.life/2020/08/26/git-submodule/</a></p>
+            <p>本文永久链接是：<a href=https://jingyu.life/2020/09/12/mysql/basic-usage/>https://jingyu.life/2020/09/12/mysql/basic-usage/</a></p>
           
         
       </blockquote>
@@ -562,10 +598,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-27T11:45:41+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-15T17:51:45+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：2020年8月27日</p>
+    <p>本页文档最后更新于：2020年9月15日</p>
   </a>
 </div>
 
@@ -574,7 +610,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/git/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Git</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/mysql/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Mysql</p></a></div>
 
 
         
@@ -587,8 +623,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://jingyu.life/2020/08/26/git-submodule/&title=git 子模块 - Jingyu_Blog&summary=
-经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://jingyu.life/2020/09/12/mysql/basic-usage/&title=mysql基础用法 - Jingyu_Blog&summary=
+不知道写啥， 简单记录一下数据库的相关操作吧，结合实例
 "
           
           >
@@ -601,8 +637,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://jingyu.life/2020/08/26/git-submodule/&title=git 子模块 - Jingyu_Blog&summary=
-经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://jingyu.life/2020/09/12/mysql/basic-usage/&title=mysql基础用法 - Jingyu_Blog&summary=
+不知道写啥， 简单记录一下数据库的相关操作吧，结合实例
 "
           
           >
@@ -615,8 +651,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://jingyu.life/2020/08/26/git-submodule/&title=git 子模块 - Jingyu_Blog&summary=
-经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。 这时候 submodule 就上场了！
+          href="http://service.weibo.com/share/share.php?url=https://jingyu.life/2020/09/12/mysql/basic-usage/&title=mysql基础用法 - Jingyu_Blog&summary=
+不知道写啥， 简单记录一下数据库的相关操作吧，结合实例
 "
           
           >
@@ -641,28 +677,22 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/09/12/mysql/basic-usage/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>mysql基础用法</p>
+              <a class='prev' href='/2020/09/14/mysql/time-func/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>mysql中的时间函数以及格式问题</p>
                 <p class='content'>
-不知道写啥， 简单记录一下数据库的相关操作吧，结合实例
+之前在开发过程中， 碰到数据库关于时间的问题，总是要去搜索一下， 自己简单记录一下常用的吧，后面遇到啥新鲜的玩意， 再加上。
 
 
 
-数据库-- 查看SHOW DATABASES;-- 创建CREATE  DATABASE &#96;test&#96; DEFAU...</p>
+时间函数
+获取当前日期和时间mysql&gt; SELECT...</p>
               </a>
             
             
-              <a class='next' href='/2020/08/09/git-usage/'>
-                <p class='title'>git学习篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+              <a class='next' href='/2020/08/26/git-submodule/'>
+                <p class='title'>git 子模块<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>
-本文不是记录所有的命令， 会将部分命令做一个简易说明
-
-​    
-
-
-看懂上面的流程， 就可以大致知道自己要进行什么操作，以及怎样操作
-安装   安装的话， 自己搜一下吧， 问题应该不大
-新...</p>
+经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生...</p>
               </a>
             
           </div>
@@ -690,7 +720,7 @@
 
   <script>
     window.subData = {
-      title: 'git 子模块',
+      title: 'mysql基础用法',
       tools: true
     }
   </script>
@@ -715,7 +745,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加子模块"><span class="toc-text">添加子模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看-amp-更新"><span class="toc-text">查看 &amp; 更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除子模块"><span class="toc-text">删除子模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步"><span class="toc-text">同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#向上同步"><span class="toc-text">向上同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向下同步"><span class="toc-text">向下同步</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意点"><span class="toc-text">注意点</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据表"><span class="toc-text">数据表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改"><span class="toc-text">修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据表的操作"><span class="toc-text">数据表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#增"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删"><span class="toc-text">删</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改"><span class="toc-text">改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查"><span class="toc-text">查</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#按需完成相关操作"><span class="toc-text">按需完成相关操作</span></a></li></ol>
     </div>
   </section>
 
