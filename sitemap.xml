@@ -4,12 +4,22 @@
 
     <sitemap>
         <loc>https://jingyu.life/post-sitemap.xml</loc>
-        <lastmod>2020-10-09T07:47:02.336Z</lastmod>
+        <lastmod>2023-03-10T17:05:37.388Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://jingyu.life/page-sitemap.xml</loc>
-        <lastmod>2020-09-15T14:15:07.795Z</lastmod>
+        <lastmod>2023-02-21T14:44:13.738Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://jingyu.life/category-sitemap.xml</loc>
+        <lastmod>2023-03-10T17:05:37.388Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://jingyu.life/tag-sitemap.xml</loc>
+        <lastmod>2023-03-10T17:05:37.388Z</lastmod>
     </sitemap>
 
 </sitemapindex>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="永无止境">
+    <meta name="author" content="Yaurora">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    
+        
+            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://jingyu.life/2020/08/09/git/git-usage/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="git学习篇">
+    <meta property="og:description" content="永无止境">
+    <meta property="og:url" content="https://jingyu.life2020/08/09/git/git-usage/">
+    
+    <meta property="og:site_name" content="Yaurora&#39;s Blog">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="git学习篇">
+    <meta name="twitter:description" content="永无止境">
+    <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon.ico">
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon.ico">
+    <meta name="theme-color" content="#005080">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon.ico">
+    
+    <title>
+        
+            git学习篇 -
+        
+        Yaurora&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/assets/fonts.css">
+    
+    
+    
+        
+            
+    
+            
+    
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"jingyu.life","root":"/","language":"zh-CN","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/avatar/young.jpg","favicon":"https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon.ico","og_image":{"enable":false,"image_url":null},"article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"目之所及,皆是回忆; 心之所想,皆是过往; 眼之所看,皆是遗憾.<br /> A % B = A - (A / B) * B","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac","custom_font":{"enable":false,"font_family":null,"font_url":null}},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.2.0","friend_links":{"columns":3},"home_article":{"date_format":"auto","category":{"enable":false,"limit":3},"tag":{"enable":true,"limit":3}},"plugins":{"aplayer":{"enable":false,"audio":[{"name":null,"artist":null,"url":null,"cover":null},{"name":null,"artist":null,"url":null,"cover":null}]}}};
+    REDEFINE.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+    
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/fontawesome/regular.min.css">
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="随手一记" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="menu-wrapper">
+    
+    <div class="menu-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Yaurora&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        文章&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/archives">归档
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/categories">分类
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/tags">标签
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/friends"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        友链
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/jingyucute">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/books">书籍
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="menu-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                文章&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/archives">归档</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/categories">分类</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/tags">标签</a>
+                            </li>
+                        
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/friends"  >
+                             
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                友链
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/jingyucute">GITHUB</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/books">书籍</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">git学习篇</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/avatar/young.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Yaurora</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2020-08-09 13:54:54</span>
+        <span class="mobile">2020-08-09 13:54</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2023-02-21 21:12:07</span>
+            <span class="mobile">2023-02-21 21:12</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%BC%80%E5%8F%91/">开发</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E5%BC%80%E5%8F%91/%E7%8E%AF%E5%A2%83/">环境</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Git/">Git</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>2.6k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
+        </span>
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <blockquote>
+<p>本文不是记录所有的命令， 会将部分命令做一个简易说明</p>
+</blockquote>
+<p>​	<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/2020/images/git-workflow.png"
+                      alt="git操作流程"
+                ></p>
+<span id="more"></span>
+
+<p>看懂上面的流程， 就可以大致知道自己要进行什么操作，以及怎样操作</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>   安装的话， 自己搜一下吧， 问题应该不大</p>
+<h3 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h3><p>​	</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在当前目录下新建一个代码库 [新建一个目录， 初始化为代码库]</span></span><br><span class="line">$ git init [project-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 远程拷贝一个项目 , 克隆到本地</span></span><br><span class="line">$ git <span class="built_in">clone</span> &lt;git-repo-url&gt; [project-name]</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 config</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑 config</span></span><br><span class="line">$ git config -e [--global]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改用户信息</span></span><br><span class="line">$ git config [--global] user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">$ git config [--global] user.email <span class="string">&quot;email@example.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令别名</span></span><br><span class="line">$ git config --global alias.st status</span><br><span class="line">$ git config --global alias.co checkout</span><br><span class="line">$ git config --global alias.ci commit</span><br><span class="line"><span class="comment"># 个人喜欢将常用的 commit 简写为 ci，  checkout简写为 co</span></span><br><span class="line"><span class="comment"># --global 是全局配置， 不加上只能在对应的git 目录下使用</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看工作区和暂存区的状态</span></span><br><span class="line">$ git status </span><br><span class="line"><span class="comment"># 将工作区的文件提交到暂存区</span></span><br><span class="line">$ git add .  </span><br><span class="line"><span class="comment"># 提交到本地仓库</span></span><br><span class="line">$ git commit -m <span class="string">&quot;本次提交说明&quot;</span></span><br><span class="line"><span class="comment"># add和commit的合并，便捷写法（未追踪的文件无法直接提交到暂存区/本地仓库）</span></span><br><span class="line">$ git commit -am <span class="string">&quot;本次提交说明&quot;</span>  </span><br><span class="line"><span class="comment"># 将本地分支和远程分支进行关联</span></span><br><span class="line">$ git push -u origin branchName </span><br><span class="line"><span class="comment"># 将本地仓库的文件推送到远程分支</span></span><br><span class="line">$ git push</span><br><span class="line"><span class="comment"># 拉取远程分支的代码</span></span><br><span class="line">$ git pull origin branchName </span><br><span class="line"><span class="comment"># 合并分支</span></span><br><span class="line">$ git merge branchName </span><br><span class="line"><span class="comment"># 查看本地拥有哪些分支</span></span><br><span class="line">$ git branch</span><br><span class="line"><span class="comment"># 查看所有分支（包括远程分支和本地分支）</span></span><br><span class="line">$ git branch -a </span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">$ git checkout branchName </span><br><span class="line"><span class="comment"># 临时将工作区文件的修改保存至堆栈中, 我个人是不太喜欢用stash的， 习惯是切换到另一个分支，保存结点。 毕竟不小心</span></span><br><span class="line"><span class="comment"># 删除 stash中的内容， 找回也挺麻烦的</span></span><br><span class="line">$ git stash</span><br><span class="line"><span class="comment"># 将之前保存至堆栈中的文件取出来</span></span><br><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h3><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## rm</span></span><br><span class="line"><span class="comment"># 删除暂存区和工作区的文件</span></span><br><span class="line">$ git <span class="built_in">rm</span> [filename]</span><br><span class="line"><span class="comment"># 只删除暂存区的文件，不会删除工作区的文件, 停止追踪文件(后面将其添加至gitignore)</span></span><br><span class="line">$ git <span class="built_in">rm</span> --cached [filename]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## commit</span></span><br><span class="line"><span class="comment"># 补充提交, 提交至上一个结点中</span></span><br><span class="line">$ git commit --amend [message] </span><br><span class="line">$ git commit --amend -no-edit</span><br><span class="line"><span class="comment"># 提交暂存区的指定文件到仓库区</span></span><br><span class="line">$ git commit [file1] [file2] ... -m [message]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## push &amp; pull &amp; fetch</span></span><br><span class="line"><span class="comment"># 将本地仓库的文件推送到远程分支</span></span><br><span class="line"><span class="comment"># 如果远程仓库没有这个分支，会新建一个同名的远程分支</span></span><br><span class="line"><span class="comment"># 如果省略远程分支名，则表示两者同名</span></span><br><span class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取并合并项目其他人员的一个分支 </span></span><br><span class="line">$ git pull origin branchname  </span><br><span class="line"><span class="comment"># 等同于 fetch + merge</span></span><br><span class="line">$ git fetch origin branchName</span><br><span class="line">$ git merge origin/branchName</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强推， 覆盖远程结点</span></span><br><span class="line">$ git push -f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## branch</span></span><br><span class="line"><span class="comment"># 查看本地分支[-r 远程， -a 本地和远程]</span></span><br><span class="line">$ git branch [-r, -a]</span><br><span class="line"><span class="comment"># 新建分支, 可以指向某个提交结点</span></span><br><span class="line">$ git branch &lt;branchName&gt; [commit]</span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">$ git checkout &lt;branchName&gt;</span><br><span class="line"><span class="comment"># 新建并切换</span></span><br><span class="line">$ git checkout -b &lt;branchName&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line"><span class="comment"># 删除本地 [-d 被删除的分支上有没有合并的结点会阻止, -D 强制删除分支 ]</span></span><br><span class="line">$ git branch [-d, -D] &lt;branchName&gt;</span><br><span class="line"><span class="comment"># 删除远程分支</span></span><br><span class="line">$ git push &lt;远程主机名&gt; :&lt;远程分支名&gt;</span><br><span class="line">$ git push &lt;远程主机名&gt; --delete &lt;远程分支名&gt;</span><br><span class="line">$ git branch -dr &lt;remote/branch&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## diff</span></span><br><span class="line"><span class="comment"># 查看工作区和暂存区所有文件的对比[单个文件的对比]</span></span><br><span class="line">$ git diff [fileName]</span><br><span class="line"><span class="comment"># 1.你修改了某个文件，但是没有提交到暂存区，这时候会有对比的内容</span></span><br><span class="line"><span class="comment"># 一旦提交到暂存区，就不会有对比的内容(因为暂存区已经更新)</span></span><br><span class="line"><span class="comment"># 2.如果你新建了一个文件，但是没有提交到暂存区，这时候 diff 是没有结果的</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看暂存区与上次提交到本地仓库的快照（即最新提交到本地仓库的快照）的对比</span></span><br><span class="line">$ git diff --cached/--staged</span><br><span class="line"><span class="comment"># 显示工作区与当前分支最新commit之间的差异</span></span><br><span class="line">$ git diff HEAD</span><br><span class="line"><span class="comment"># 查看本地两个分支的所有的对比[单个文件的对比]</span></span><br><span class="line">$ git diff &lt;branchName1&gt; &lt;branchName2&gt; [fileName]</span><br><span class="line"><span class="comment"># 查看远程分支和远程分支[本地分支]的对比 或 单个文件</span></span><br><span class="line">$ git diff &lt;远程主机名/branchname1&gt; &lt;远程主机名/branchname2 | branchname2&gt; [filenName]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看两个 commit 的对比</span></span><br><span class="line">$ git diff commit1 commit2  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 一个有意思的命令, 查看自己写了多少代码</span></span><br><span class="line">$ git diff --shortstat <span class="string">&quot;@&#123;0 day ago&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## blame 谁动了你的面包, 甩锅大法</span></span><br><span class="line"><span class="comment"># 显示指定文件是什么人在什么时间修改过</span></span><br><span class="line">$ git blame [fileName]</span><br><span class="line"></span><br><span class="line"><span class="comment">## log</span></span><br><span class="line"><span class="comment"># 查看提交历史</span></span><br><span class="line">$ git <span class="built_in">log</span> --oneline  </span><br><span class="line">          --grep=<span class="string">&quot;关键字&quot;</span></span><br><span class="line">          --graph </span><br><span class="line">          --all      </span><br><span class="line">          --author <span class="string">&quot;username&quot;</span>     </span><br><span class="line">          --reverse </span><br><span class="line">          -num</span><br><span class="line">          -p</span><br><span class="line">          --before=  1  day/1  week/1  <span class="string">&quot;2019-06-06&quot;</span> </span><br><span class="line">          --after= <span class="string">&quot;2019-06-06&quot;</span></span><br><span class="line">          --<span class="built_in">stat</span> </span><br><span class="line">          --abbrev-commit </span><br><span class="line">          --pretty=format:<span class="string">&quot;xxx&quot;</span></span><br><span class="line">          </span><br><span class="line"><span class="comment"># oneline -&gt; 将日志记录一行一行的显示</span></span><br><span class="line"><span class="comment"># grep=&quot;关键字&quot; -&gt; 查找日志记录中(commit提交时的注释)与关键字有关的记录</span></span><br><span class="line"><span class="comment"># graph -&gt; 记录图形化显示 ！！！    </span></span><br><span class="line"><span class="comment"># all -&gt; 将所有记录都详细的显示出来</span></span><br><span class="line"><span class="comment"># author &quot;username&quot; -&gt; 查找这个作者提交的记录</span></span><br><span class="line"><span class="comment"># reverse -&gt; commit 提交记录顺序翻转      </span></span><br><span class="line"><span class="comment"># before -&gt; 查找规定的时间(如:1天/1周)之前的记录   </span></span><br><span class="line"><span class="comment"># num -&gt; git log -10 显示最近10次提交 ！！！    </span></span><br><span class="line"><span class="comment"># stat -&gt; 显示每次更新的文件修改统计信息，会列出具体文件列表 ！！！</span></span><br><span class="line"><span class="comment"># abbrev-commit -&gt; 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符 ！！！</span></span><br><span class="line"><span class="comment"># pretty=format:&quot;xxx&quot; -&gt;  可以定制要显示的记录格式 ！！！</span></span><br><span class="line"><span class="comment"># p -&gt; 显示每次提交所引入的差异（按 补丁 的格式输出）！！！</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用</span></span><br><span class="line">$ git <span class="built_in">log</span> --graph [--<span class="built_in">stat</span>]</span><br><span class="line"><span class="comment"># 查看本地 git 命令历史, 常用来恢复某些失误的操作</span></span><br><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line"><span class="comment">## show</span></span><br><span class="line"><span class="comment"># 显示某次提交的元数据和内容变化</span></span><br><span class="line">$ git show [commit]</span><br><span class="line"><span class="comment"># 显示某次提交发生变化的文件</span></span><br><span class="line">$ git show --name-only [commit]</span><br><span class="line"><span class="comment"># 显示某次提交时，某个文件的内容</span></span><br><span class="line">$ git show [commit]:[filename]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## tag</span></span><br><span class="line"><span class="comment"># 列出所有tag</span></span><br><span class="line">$ git tag</span><br><span class="line"><span class="comment"># 新建一个tag在指定commit, 可以指定说明文字</span></span><br><span class="line">$ git tag [tag] [commit] [-m <span class="string">&quot;message&quot;</span>]</span><br><span class="line"><span class="comment"># 查看单个标签具体信息</span></span><br><span class="line">$ git show &lt;tagname&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送一个本地标签</span></span><br><span class="line">$ git push &lt;远程主机名&gt; &lt;tagname&gt;</span><br><span class="line"><span class="comment"># 推送全部未推送过的本地标签</span></span><br><span class="line">$ git push &lt;远程主机名&gt; --tags</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地tag</span></span><br><span class="line">$ git tag -d [tag]</span><br><span class="line"><span class="comment"># 删除远程tag, 有点像删除远程分支</span></span><br><span class="line">$ git push &lt;远程主机名&gt; :refs/tags/&lt;tagname&gt;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">## remote</span></span><br><span class="line"><span class="comment"># 查看所有远程主机</span></span><br><span class="line">$ git remote</span><br><span class="line"><span class="comment"># 查看关联的远程仓库的详细信息</span></span><br><span class="line">$ git remote -v </span><br><span class="line"><span class="comment"># 删除远程仓库的 “关联”</span></span><br><span class="line">$ git remote <span class="built_in">rm</span> &lt;远程主机名&gt; </span><br><span class="line"><span class="comment"># 添加远程仓库的 “关联”</span></span><br><span class="line">$ git remote add &lt;远程主机名&gt; &lt;remote-url&gt;</span><br><span class="line"><span class="comment"># 设置远程仓库的 “关联”</span></span><br><span class="line">$ git remote set-url &lt;远程主机名&gt; &lt;newurl&gt;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="单读讲讲"><a href="#单读讲讲" class="headerlink" title="单读讲讲"></a>单读讲讲</h3><ul>
+<li><h4 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h4><ul>
+<li><p><code>merge</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/2020/images/merge.png"
+                      alt="merge方式"
+                ></p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将另外一个分支合并到当前分支，主要是合并到master</span></span><br><span class="line">$ git merge &lt;branchName&gt; [--fast-forward | --no-ff | --squash]</span><br><span class="line"><span class="comment"># --fast-forward: 会在当前分支的提交历史中添加进被合并分支的提交历史</span></span><br><span class="line"><span class="comment"># --no-ff: 会生成一个新的提交，让当前分支的提交历史不会那么乱</span></span><br><span class="line"><span class="comment"># --squash: 不会生成新的提交，会将被合并分支多次提交的内容直接存到工作区和暂存区，由开发者手动去提交，这样当前分支最终只会多出一条提交记录，不会掺杂被合并分支的提交历史</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><code>rebase</code></p>
+<p>关于rebase 的示意图，  <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/gtlbtnq9mr3/article/details/80222523" >看看这篇文章吧 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将master分支中的修改添加到master分支上(保证当前分支的修改， 是基于master分支上的修改)</span></span><br><span class="line">$ git checkout &lt;branchName&gt;</span><br><span class="line">$ git rebase master</span><br><span class="line"><span class="comment"># 或者直接使用</span></span><br><span class="line">$ git rebase &lt;branchName1&gt; &lt;branchName2&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对当前分支提交的 startpoint -&gt; endpoint (前开后闭) 提交记录进行整理</span></span><br><span class="line">$ git rebase -i  [startpoint]  [endpoint]</span><br><span class="line"><span class="comment"># pick：保留该commit（缩写:p）</span></span><br><span class="line"><span class="comment"># reword：保留该commit，但我需要修改该commit的注释（缩写:r）</span></span><br><span class="line"><span class="comment"># edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）</span></span><br><span class="line"><span class="comment"># squash：将该commit和前一个commit合并（缩写:s）</span></span><br><span class="line"><span class="comment"># fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）</span></span><br><span class="line"><span class="comment"># exec：执行shell命令（缩写:x）</span></span><br><span class="line"><span class="comment"># drop：我要丢弃该commit（缩写:d）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择特定的结点到指定分支(区间前开后闭), 建议使用 cherry-pick</span></span><br><span class="line">$ git rebase [startpoint] [endpoint] --onto master</span><br><span class="line"><span class="comment"># 注意: 添加过去的结点， 还处于游离状态(HEAD没有处于最新结点) ， 可以新建一个分支或直接使用 reset --hard</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><code>cherry-pick</code></p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将提交的结点 添加到当前分支，会产生一个新的提交(哈希值不一样)</span></span><br><span class="line">$ git cherry-pick &lt;commitHash&gt;</span><br><span class="line"><span class="comment"># 将另外一个分支上最新提交的结点添加到当前分支</span></span><br><span class="line">$ git cherry-pick &lt;branchName&gt;</span><br><span class="line"><span class="comment"># 转移多个提交</span></span><br><span class="line">$ git cherry-pick &lt;HashA&gt; &lt;HashB&gt;</span><br><span class="line"><span class="comment"># 转移一系列提交（区间， 左开右闭）</span></span><br><span class="line">$ git cherry-pick &lt;HashA&gt;^..&lt;HashB&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>关于<code>cherry-pick</code>, <a class="link"   target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html" >参考这里 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</li>
+</ul>
+</li>
+<li><h4 id="撤销-amp-回退"><a href="#撤销-amp-回退" class="headerlink" title="撤销&amp;回退"></a>撤销&amp;回退</h4><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原来的命令</span></span><br><span class="line"><span class="comment"># 撤销工作区修改的文件, 还未提交到暂存区</span></span><br><span class="line">$ git checkout filname</span><br><span class="line"><span class="comment"># 撤销暂存区的文件</span></span><br><span class="line">$ git reset HEAD filename</span><br><span class="line"></span><br><span class="line"><span class="comment">## checkout</span></span><br><span class="line"><span class="comment"># 恢复暂存区的指定文件到工作区</span></span><br><span class="line">$ git checkout &lt;filename&gt;</span><br><span class="line"><span class="comment"># 恢复暂存区的所有文件到工作区</span></span><br><span class="line">$ git checkout .</span><br><span class="line"><span class="comment"># 恢复某个commit的指定文件到暂存区和工作区</span></span><br><span class="line">$ git checkout [commit] [file]</span><br><span class="line"><span class="comment"># 检出结点, 标签</span></span><br><span class="line">$ git checkout[&lt;commitid&gt; | &lt;tag&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment">## reset</span></span><br><span class="line"><span class="comment"># 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</span></span><br><span class="line">$ git reset [file]</span><br><span class="line"><span class="comment"># 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变, 软回退</span></span><br><span class="line">$ git reset [commit]</span><br><span class="line"><span class="comment"># 重置暂存区与工作区，与上一次commit保持一致, 硬回退</span></span><br><span class="line">$ git reset --hard [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment">## revert</span></span><br><span class="line"><span class="comment"># 生成一个撤销指定提交版本的新提交</span></span><br><span class="line">$ git revert &lt;commit_id&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新命令</span></span><br><span class="line"><span class="comment">## restore &amp; switch</span></span><br><span class="line"><span class="comment"># 主要还是为了分离 checkout的功能</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支 = git checkout &lt;branchName&gt;</span></span><br><span class="line">$ git switch &lt;branchName&gt;</span><br><span class="line"><span class="comment"># 创建并切换到新建分支 = git checkout -b &lt;newbranch&gt;</span></span><br><span class="line">$ git switch -c &lt;newBranch&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 撤销工作区修改的文件 = git checkout &lt;fileName&gt;</span></span><br><span class="line">$ git restore &lt;fileName&gt;</span><br><span class="line"><span class="comment"># 撤销暂存区的文件 = git reset &lt;fileName&gt;</span></span><br><span class="line">$ git restore --staged &lt;fileName&gt;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：git学习篇</li>
+        <li>本文作者：Yaurora</li>
+        <li>创建时间：2020-08-09 13:54:54</li>
+        <li>
+            本文链接：https://jingyu.life/2020/08/09/git/git-usage/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Git/">#Git</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2020/08/26/git/git-submodule/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">git 子模块</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2020/08/02/docker/compose/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Docker 进阶篇之Compose</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">git学习篇</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA"><span class="nav-text">新建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%91%BD%E4%BB%A4"><span class="nav-text">其它命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%AF%BB%E8%AE%B2%E8%AE%B2"><span class="nav-text">单读讲讲</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6"><span class="nav-text">分支合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%92%A4%E9%94%80-amp-%E5%9B%9E%E9%80%80"><span class="nav-text">撤销&amp;回退</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">Yaurora</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br> 
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.2.0</a>
+        </div>
+        
+        
+        
+            <div id="start_time_div" style="display:none">
+                2020/05/01 00:00:00
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="unfolded-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="folded-tools-list">
+        <li class="right-bottom-tools tool-toggle-show flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+<script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/layouts/menu-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/tools/go-top-bottom.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/tools/dark-light-toggle.js"></script>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/tools/local-search.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/tools/code-block.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/layouts/lazyload.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/tools/runtime.js"></script>
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/layouts/odometer.min.js"></script>
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/assets/odometer-theme-minimal.css">
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/tools/toc-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/layouts/toc.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/plugins/tabs.js"></script>
+    
+    
+</div>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.2.0/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

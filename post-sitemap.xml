@@ -2,22 +2,87 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://jingyu.life</loc>
+        <loc>https://jingyu.life/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
+
     <url>
-        <loc>https://jingyu.life/2020/10/01/redis/basic-usage/</loc>
-        <lastmod>2020-10-09T07:47:02.336Z</lastmod>
+        <loc>https://jingyu.life/2023/03/10/node/for-in-of/</loc>
+        <lastmod>2023-03-10T17:05:37.388Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://jingyu.life/2020/09/12/mysql/basic-usage/</loc>
-        <lastmod>2020-09-15T17:14:14.118Z</lastmod>
+        <loc>https://jingyu.life/2023/03/06/node/promise-usage/</loc>
+        <lastmod>2023-03-10T10:47:10.286Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2023/03/07/tools/vscode-plugins/</loc>
+        <lastmod>2023-03-10T10:47:10.286Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2023/03/09/node/debounce-throttle/</loc>
+        <lastmod>2023-03-10T10:47:10.285Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2020/07/15/node/nvm-usage/</loc>
+        <lastmod>2023-03-10T10:47:10.285Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2020/06/25/tools/typora-usage/</loc>
+        <lastmod>2023-03-07T13:16:29.012Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2020/07/28/tools/tool-assistant/</loc>
+        <lastmod>2023-03-07T13:16:29.011Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2023/02/21/hexo-theme-use/</loc>
+        <lastmod>2023-02-21T15:02:19.588Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2020/08/09/git/git-usage/</loc>
+        <lastmod>2023-02-21T13:12:07.444Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/2020/08/26/git/git-submodule/</loc>
+        <lastmod>2023-02-21T13:12:07.443Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -25,31 +90,23 @@
 
     <url>
         <loc>https://jingyu.life/2020/09/14/mysql/time-func/</loc>
-        <lastmod>2020-09-15T07:09:14.916Z</lastmod>
+        <lastmod>2023-02-19T14:49:18.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://jingyu.life/2020/08/09/git-usage/</loc>
-        <lastmod>2020-09-13T14:21:18.473Z</lastmod>
+        <loc>https://jingyu.life/2020/09/12/mysql/basic-usage/</loc>
+        <lastmod>2023-02-19T14:28:33.833Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://jingyu.life/2020/08/26/git-submodule/</loc>
-        <lastmod>2020-08-27T03:45:41.801Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jingyu.life/2020/06/25/typora-usage/</loc>
-        <lastmod>2020-08-27T03:14:23.787Z</lastmod>
+        <loc>https://jingyu.life/2020/10/01/redis/basic-usage/</loc>
+        <lastmod>2020-10-09T07:47:02.336Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -66,22 +123,6 @@
     <url>
         <loc>https://jingyu.life/2020/07/31/docker/basic/</loc>
         <lastmod>2020-08-01T09:22:24.592Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jingyu.life/2020/07/28/tool-assistant/</loc>
-        <lastmod>2020-08-01T09:03:11.670Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jingyu.life/2020/07/15/nvm-usage/</loc>
-        <lastmod>2020-07-31T09:16:57.957Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
