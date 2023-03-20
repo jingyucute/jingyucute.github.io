@@ -18,18 +18,18 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://jingyu.life/blog/categories/"/>
+    <link rel="canonical" href="https://jingyu.life/2023/03/19/db/mysql/install&init/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="所有分类">
+    <meta property="og:title" content="MySQL安装和初始化">
     <meta property="og:description" content="永无止境">
-    <meta property="og:url" content="https://jingyu.lifeblog/categories/index.html">
+    <meta property="og:url" content="https://jingyu.life2023/03/19/db/mysql/install&amp;init/">
     
     <meta property="og:site_name" content="Yaurora&#39;s Blog">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="所有分类">
+    <meta name="twitter:title" content="MySQL安装和初始化">
     <meta name="twitter:description" content="永无止境">
     <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/favicon/favicon.ico">
     <!--- Icon Part-->
@@ -41,7 +41,7 @@
     
     <title>
         
-            所有分类 -
+            MySQL安装和初始化 -
         
         Yaurora&#39;s Blog
     </title>
@@ -351,17 +351,234 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="page-template-container">
-        
-        
-        <div class="page-template-content markdown-body">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
             
-                <h1>所有分类</h1>
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">MySQL安装和初始化</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/avatar/young.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Yaurora</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-03-19 11:00</span>
+        <span class="mobile">2023-03-19 11</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2023-03-20 19:43:54</span>
+            <span class="mobile">2023-03-20 19:43</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%BC%80%E5%8F%91/">开发</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>897 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <blockquote>
+<p>MySQL安装、卸载，以及密码初始化流程</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="Ubuntu下相关操作"><a href="#Ubuntu下相关操作" class="headerlink" title="Ubuntu下相关操作"></a>Ubuntu下相关操作</h3><h4 id="卸载MySQL"><a href="#卸载MySQL" class="headerlink" title="卸载MySQL"></a>卸载MySQL</h4><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 若有必要，可以先备份相关数据</span></span><br><span class="line"><span class="comment"># 删除MySQL包和相关配置文件</span></span><br><span class="line">$ sudo apt purge mysql-*</span><br><span class="line"><span class="comment"># 删除MySQL相关配置文件和数据文件(日志文件上一步已经删除了)</span></span><br><span class="line">$ sudo <span class="built_in">rm</span> -rf /etc/mysql /var/lib/mysql*</span><br><span class="line"><span class="comment"># 自动移除没有被依赖的包</span></span><br><span class="line">$ sudo apt autoremove</span><br><span class="line">$ sudo apt autoclean</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="安装最新版本"><a href="#安装最新版本" class="headerlink" title="安装最新版本"></a>安装最新版本</h4><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install mysql-server</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="初始登陆"><a href="#初始登陆" class="headerlink" title="初始登陆"></a>初始登陆</h4><ul>
+<li>root用户下可以直接输入<code>mysql</code>命令，非root用户数据<code>sudo mysql</code></li>
+<li>可以查看<code>/etc/mysql/debian.cnf</code>文件，使用<code>debian-sys-maint</code>这个帐号登陆</li>
+</ul>
+<h4 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h4><p>配置文件路径: <code>/etc/mysql/my.cnf</code></p>
+<p>​	关于参数修改，可能会修改 <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>,my.cnf加载了这个文件</p>
+<p>数据存储路径: <code>/var/lib/mysql</code></p>
+<p>日志存储路径: <code>/var/log/mysql</code></p>
+<h3 id="Centos下相关操作"><a href="#Centos下相关操作" class="headerlink" title="Centos下相关操作"></a>Centos下相关操作</h3><h4 id="卸载Mysql"><a href="#卸载Mysql" class="headerlink" title="卸载Mysql"></a>卸载Mysql</h4><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找mariadb并卸载</span></span><br><span class="line">$ sudo rpm -qa | grep mariadb</span><br><span class="line">mariadb-libs-5.5.68-1.el7.x86_64</span><br><span class="line">mariadb-5.5.68-1.el7.x86_64</span><br><span class="line">mariadb-devel-5.5.68-1.el7.x86_64</span><br><span class="line"></span><br><span class="line">$ sudo rpm -e --nodeps mariadb-libs-5.5.68-1.el7.x86_64 mariadb-5.5.68-1.el7.x86_64 mariadb-devel-5.5.68-1.el7.x86_64</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找mysql并卸载</span></span><br><span class="line">$ sudo rpm -qa | grep i mysql</span><br><span class="line">mysql-community-client-plugins-8.0.31-1.el7.x86_64</span><br><span class="line">mysql-community-icu-data-files-8.0.31-1.el7.x86_64</span><br><span class="line">mysql-community-server-8.0.31-1.el7.x86_64</span><br><span class="line">mysql-community-common-8.0.31-1.el7.x86_64</span><br><span class="line">mysql-community-libs-8.0.31-1.el7.x86_64</span><br><span class="line">mysql-community-client-8.0.31-1.el7.x86_64</span><br><span class="line"></span><br><span class="line">$ sudo rpm -qa | grep -i mysql | xargs sudo rpm -e --nodeps</span><br><span class="line">$ sudo find / -name mysql | xargs sudo <span class="built_in">rm</span> -rf</span><br><span class="line">$ sudo <span class="built_in">rm</span> -rf /etc/my.cnf</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 先检查临时目录权限</span></span><br><span class="line">$ sudo <span class="built_in">chmod</span> 777 /tmp</span><br><span class="line"><span class="comment">## 检查依赖</span></span><br><span class="line">$ rpm -qa | grep libaio</span><br><span class="line">$ rpm -qa | grep net-tools</span><br><span class="line"><span class="comment">## 去官网下载最新版本</span></span><br><span class="line">$ wget https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.32-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line"><span class="comment">## 解压</span></span><br><span class="line">$ tar -xvf mysql-8.0.32-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line"></span><br><span class="line"><span class="comment">## 按照如下顺序安装</span></span><br><span class="line"><span class="comment">## 公共包</span></span><br><span class="line">$ sudo rpm -ivh mysql-community-common-8.0.32-1.el7.x86_64.rpm</span><br><span class="line"><span class="comment">## 客户端</span></span><br><span class="line">$ sudo rpm -ivh mysql-community-client-plugins-8.0.32-1.el7.x86_64.rpm</span><br><span class="line">$ sudo rpm -ivh mysql-community-libs-8.0.32-1.el7.x86_64.rpm</span><br><span class="line">$ sudo rpm -ivh mysql-community-client-8.0.32-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">$ sudo rpm -ivh mysql-community-icu-data-files-8.0.32-1.el7.x86_64.rpm</span><br><span class="line">$ sudo rpm -ivh mysql-community-server-8.0.32-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="修改数据库目录所有者"><a href="#修改数据库目录所有者" class="headerlink" title="修改数据库目录所有者"></a>修改数据库目录所有者</h4><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysqld --initialize --user=mysql</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="初始登陆-1"><a href="#初始登陆-1" class="headerlink" title="初始登陆"></a>初始登陆</h4><p>查看root初始密码</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">cat</span> /var/log/mysqld.log | grep password</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="修改初始密码"><a href="#修改初始密码" class="headerlink" title="修改初始密码"></a>修改初始密码</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;new_passsword&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>注意</strong></p>
+<p>在ubuntu下，不能使用<code>mysql&gt; ALTER USER USER() IDENTIFIED BY &#39;new_passsword&#39;;</code>，会报错</p>
+<p>在centos下，初始密码不能过于简单，必须是数字字母和符号的集合，ubuntu下没有要求</p>
+<p>而且很奇怪，两个同样的版本，为什么关于校验的参数会不一样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/picgo/202303201916231.png"
+                      alt="image-20230320191653202"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/picgo/202303201915248.png"
+                      alt="image-20230320191524696"
+                ></p>
+<p>可能后面会统一吧</p>
+<h3 id="忘记密码？"><a href="#忘记密码？" class="headerlink" title="忘记密码？"></a>忘记密码？</h3><p>忘记密码，不用慌，我们可以重置密码。这一步，主要是用到mysqld的跳过授权表<code>skip-grant-tables</code>这个选项</p>
+<ul>
+<li><p>第一步， 编辑配置文件<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>或者<code>/etc/my.cnf</code></p>
+<p>添加如下配置</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/jingyucute/cdn-assets/picgo/202303201932711.png"
+                      alt="image-20230320193240661"
+                ></p>
+</li>
+<li><p>第二步，重启mysql服务</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu下</span></span><br><span class="line">$ sudo systemctl restart mysql</span><br><span class="line"><span class="comment"># centos下</span></span><br><span class="line">$ sudo systemctl restart mysqld</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>第三步，登陆，修改密码</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接使用mysql, 可能登陆</span></span><br><span class="line">$ mysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 登陆后刷新授权表</span></span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line"><span class="comment"># 更改密码</span></span><br><span class="line">mysql&gt; alter user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified by <span class="string">&#x27;new_password&#x27;</span>;</span><br><span class="line"><span class="comment"># 再次刷新刷新授权表</span></span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line">mysql&gt; <span class="built_in">exit</span></span><br></pre></td></tr></table></figure></div>
+
+<p><em><strong>到目前为止，已经可以使用重置后的密码进行登录了</strong></em></p>
+</li>
+<li><p>第四步，还原配置文件。 </p>
+<p>还原配置文件后，可以重启，也可以不重启，因为授权表已经刷新到内存了</p>
+</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：MySQL安装和初始化</li>
+        <li>本文作者：Yaurora</li>
+        <li>创建时间：2023-03-19 11:00:00</li>
+        <li>
+            本文链接：https://jingyu.life/2023/03/19/db/mysql/install&amp;init/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/03/14/go/go-module/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Go Modules包管理</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
             
         </div>
-        <div class="page-template-comments">
-            
-        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">MySQL安装和初始化</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu%E4%B8%8B%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-text">Ubuntu下相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDMySQL"><span class="nav-text">卸载MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC"><span class="nav-text">安装最新版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E7%99%BB%E9%99%86"><span class="nav-text">初始登陆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3"><span class="nav-text">了解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Centos%E4%B8%8B%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-text">Centos下相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDMysql"><span class="nav-text">卸载Mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%AE%E5%BD%95%E6%89%80%E6%9C%89%E8%80%85"><span class="nav-text">修改数据库目录所有者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E7%99%BB%E9%99%86-1"><span class="nav-text">初始登陆</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81"><span class="nav-text">修改初始密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%EF%BC%9F"><span class="nav-text">忘记密码？</span></a></li></ol>
+
+    </div>
+</div>
+            </div>
+        
     </div>
 </div>
 
@@ -431,6 +648,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -556,6 +790,8 @@
 
 
 <div class="post-scripts pjax">
+    
+        <script src="https://cdn.jsdelivr.net/npm/hexo-theme-redefine@1.2.3/source/js/tools/toc-toggle.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-redefine@1.2.3/source/js/libs/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-redefine@1.2.3/source/js/layouts/toc.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-redefine@1.2.3/source/js/plugins/tabs.js"></script>
     
 </div>
 

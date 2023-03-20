@@ -9,15 +9,36 @@
 
 
     <url>
-        <loc>https://jingyu.life/categories/%25E5%25BC%2580%25E5%258F%2591/%25E7%258E%25AF%25E5%25A2%2583/</loc>
-        <lastmod>2023-03-13T16:45:09.437Z</lastmod>
+        <loc>https://jingyu.life/categories/%25E5%25B7%25A5%25E5%2585%25B7/</loc>
+        <lastmod>2023-03-20T12:02:35.773Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/categories/%25E5%25BC%2580%25E5%258F%2591/%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593/</loc>
+        <lastmod>2023-03-20T11:43:54.252Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://jingyu.life/categories/%25E5%25BC%2580%25E5%258F%2591/</loc>
-        <lastmod>2023-03-13T16:45:09.437Z</lastmod>
+        <lastmod>2023-03-20T11:43:54.252Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/categories/%25E5%25BC%2580%25E5%258F%2591/%25E7%258E%25AF%25E5%25A2%2583/</loc>
+        <lastmod>2023-03-19T13:17:38.404Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://jingyu.life/categories/%25E5%25BC%2580%25E5%258F%2591/Go/</loc>
+        <lastmod>2023-03-19T13:17:38.402Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -25,20 +46,6 @@
     <url>
         <loc>https://jingyu.life/categories/%25E5%25BC%2580%25E5%258F%2591/%25E5%2589%258D%25E7%25AB%25AF/</loc>
         <lastmod>2023-03-13T16:04:28.292Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://jingyu.life/categories/%25E5%25BC%2580%25E5%258F%2591/%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593/</loc>
-        <lastmod>2023-03-13T16:04:28.290Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://jingyu.life/categories/%25E5%25B7%25A5%25E5%2585%25B7/</loc>
-        <lastmod>2023-03-10T10:47:10.286Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
